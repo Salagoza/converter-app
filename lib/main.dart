@@ -1,4 +1,8 @@
 
+import 'dart:ffi';
+
+import 'package:converter_app/category_button_action.dart';
+import 'package:converter_app/test_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,7 +13,7 @@ class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
 
   // Method to create a category of unit
-  Widget createCategoryButton(Color c,String buttonLabel) {
+  Widget createCategoryButton(Color c,String buttonLabel,context,StatelessWidget widget) {
     return Expanded(
         child: Container(
           padding: const EdgeInsets.all(10),
@@ -25,7 +29,9 @@ class Homepage extends StatelessWidget {
                     fontWeight: FontWeight.bold)
             ),
             onPressed: () {
-              print(buttonLabel);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const TestPage()));
             },
           ),
         )
@@ -58,25 +64,80 @@ class Homepage extends StatelessWidget {
                 ),
               ),
                 Row(
-                    children: [createCategoryButton(Colors.yellow, "Area"),
-                      createCategoryButton(Colors.red, "Temperature")
-                    ]),
+                    children: [CategoryButton(action: CategoryAction(
+                      color: Colors.white,
+                      label: "Area",
+                      labelColor: Colors.black,
+                      iconData: Icons.abc,
+                      iconColor: Colors.green,
+                      callback: (context) {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                      }
+                    )),
+                      CategoryButton(action: CategoryAction(
+                          color: Colors.white,
+                          label: "Length",
+                          labelColor: Colors.black,
+                          iconData: Icons.abc,
+                          iconColor: Colors.green,
+                          callback: (context) {
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                          }
+                      ))
+                    ],
+          ),
                 Row(
-                    children: [createCategoryButton(Colors.green, "Length"),
-                      createCategoryButton(Colors.blue, "Volume")]
+                  children: [CategoryButton(action: CategoryAction(
+                      color: Colors.white,
+                      label: "Temperature",
+                      labelColor: Colors.black,
+                      iconData: Icons.abc,
+                      iconColor: Colors.green,
+                      callback: (context) {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                      }
+                  )),
+                    CategoryButton(action: CategoryAction(
+                        color: Colors.white,
+                        label: "Volume",
+                        labelColor: Colors.black,
+                        iconData: Icons.abc,
+                        iconColor: Colors.green,
+                        callback: (context) {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                        }
+                    ))
+                  ],
                 ),
                 Row(
-                    children: [createCategoryButton(Colors.purple,"Weight"),
-                      createCategoryButton(Colors.pink,"Speed")]
+                  children: [CategoryButton(action: CategoryAction(
+                      color: Colors.white,
+                      label: "Weight",
+                      labelColor: Colors.black,
+                      iconData: Icons.abc,
+                      iconColor: Colors.green,
+                      callback: (context) {
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                      }
+                  )),
+                    CategoryButton(action: CategoryAction(
+                        color: Colors.white,
+                        label: "Speed",
+                        labelColor: Colors.black,
+                        iconData: Icons.abc,
+                        iconColor: Colors.green,
+                        callback: (context) {
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                        }
+                    ))
+                  ],
                 )
-                
+
             ]
-          )
-            ,
           ),
         ),
       ),
-    );
+    ));
   }
 
 }
