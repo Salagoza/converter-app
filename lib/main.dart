@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,7 +13,7 @@ class Homepage extends StatelessWidget {
     return Expanded(
         child: Container(
           padding: const EdgeInsets.all(10),
-          height: 250,
+          height: 200,
           child: TextButton(
             child: Text(buttonLabel),
             style: TextButton.styleFrom(
@@ -36,23 +37,42 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.blueGrey,
+
+        backgroundColor: Colors.grey,
         body: SafeArea(
-          child: Column(
-            children: [
-              Row(
-                  children: [createCategoryButton(Colors.yellow, "Area"),
-                    createCategoryButton(Colors.red, "Temperature")
-                  ]),
-              Row(
-                  children: [createCategoryButton(Colors.green, "Length"),
-                    createCategoryButton(Colors.blue, "Volume")]
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+              Container(
+                width: 200.0,
+                child: Text(
+                    "Unit Converter",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 36,
+                      fontWeight: FontWeight.bold,
+                    )
+                ),
               ),
-              Row(
-                  children: [createCategoryButton(Colors.purple,"Weight"),
-                    createCategoryButton(Colors.pink,"Speed")]
-              )
-            ],
+                Row(
+                    children: [createCategoryButton(Colors.yellow, "Area"),
+                      createCategoryButton(Colors.red, "Temperature")
+                    ]),
+                Row(
+                    children: [createCategoryButton(Colors.green, "Length"),
+                      createCategoryButton(Colors.blue, "Volume")]
+                ),
+                Row(
+                    children: [createCategoryButton(Colors.purple,"Weight"),
+                      createCategoryButton(Colors.pink,"Speed")]
+                )
+                
+            ]
+          )
+            ,
           ),
         ),
       ),
