@@ -33,14 +33,24 @@ class CategoryButton extends StatelessWidget {
     return Expanded(child: Container(
       padding: const EdgeInsets.all(10),
       height: 200,
-      child:OutlinedButton.icon(
+      child:OutlinedButton(
         onPressed: () => action.callback.call(context),
         style: OutlinedButton.styleFrom(
           backgroundColor: action.color,
-          padding: const EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(20.0),
         ),
-        label: Text(action.label, style: TextStyle(color: action.labelColor)),
-        icon: Icon(action.iconData, color: action.iconColor),
+        child: Container(
+            child: Stack( children:
+            <Widget> [Align(
+                alignment: Alignment.center,
+                child: Icon(action.iconData, color: action.iconColor, size: 100)),
+              Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Text(action.label,
+                      style: TextStyle(color: action.labelColor)))],
+            )
+        )
+
       ) ,
 
     ));

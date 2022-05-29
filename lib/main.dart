@@ -1,6 +1,3 @@
-
-import 'dart:ffi';
-
 import 'package:converter_app/category_button_action.dart';
 import 'package:converter_app/test_page.dart';
 import 'package:flutter/material.dart';
@@ -12,38 +9,10 @@ void main() {
 class Homepage extends StatelessWidget {
   const Homepage({Key? key}) : super(key: key);
 
-  // Method to create a category of unit
-  Widget createCategoryButton(Color c,String buttonLabel,context,StatelessWidget widget) {
-    return Expanded(
-        child: Container(
-          padding: const EdgeInsets.all(10),
-          height: 200,
-          child: TextButton(
-            child: Text(buttonLabel),
-            style: TextButton.styleFrom(
-                primary: Colors.black,
-                backgroundColor: c,
-                textStyle:
-                const TextStyle(fontSize: 24,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.bold)
-            ),
-            onPressed: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const TestPage()));
-            },
-          ),
-        )
-    );
-  }
-
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-
         backgroundColor: Colors.grey,
         body: SafeArea(
           child: Padding(
@@ -52,7 +21,7 @@ class Homepage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-              Container(
+              const SizedBox(
                 width: 200.0,
                 child: Text(
                     "Unit Converter",
@@ -71,7 +40,7 @@ class Homepage extends StatelessWidget {
                       iconData: Icons.abc,
                       iconColor: Colors.green,
                       callback: (context) {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TestPage()));
                       }
                     )),
                       CategoryButton(action: CategoryAction(
@@ -81,7 +50,7 @@ class Homepage extends StatelessWidget {
                           iconData: Icons.abc,
                           iconColor: Colors.green,
                           callback: (context) {
-                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                            Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TestPage()));
                           }
                       ))
                     ],
@@ -94,7 +63,7 @@ class Homepage extends StatelessWidget {
                       iconData: Icons.abc,
                       iconColor: Colors.green,
                       callback: (context) {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TestPage()));
                       }
                   )),
                     CategoryButton(action: CategoryAction(
@@ -104,7 +73,7 @@ class Homepage extends StatelessWidget {
                         iconData: Icons.abc,
                         iconColor: Colors.green,
                         callback: (context) {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TestPage()));
                         }
                     ))
                   ],
@@ -117,7 +86,7 @@ class Homepage extends StatelessWidget {
                       iconData: Icons.abc,
                       iconColor: Colors.green,
                       callback: (context) {
-                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                        Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TestPage()));
                       }
                   )),
                     CategoryButton(action: CategoryAction(
@@ -127,7 +96,7 @@ class Homepage extends StatelessWidget {
                         iconData: Icons.abc,
                         iconColor: Colors.green,
                         callback: (context) {
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => TestPage()));
+                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => const TestPage()));
                         }
                     ))
                   ],
