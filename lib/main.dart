@@ -13,7 +13,7 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        backgroundColor: Colors.grey,
+        backgroundColor: Colors.white,
         body: SafeArea(
           child: Padding(
             padding: const EdgeInsets.all(12.0),
@@ -22,19 +22,22 @@ class Homepage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
               const SizedBox(
-                width: 200.0,
-                child: Text(
-                    "Unit Converter",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 36,
-                      fontWeight: FontWeight.bold,
-                    )
+                width: 400.0,
+                height: 80.0,
+                child: Center(
+                  child: Text(
+                      "Unit Converter",
+                      style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 36,
+                        fontWeight: FontWeight.bold,
+                      )
+                  ),
                 ),
               ),
                 Row(
                     children: [CategoryButton(action: CategoryAction(
-                      color: Colors.white,
+                      color: Color(0xFFEEEEEE),
                       label: "Area",
                       labelColor: Colors.black,
                       iconData: Icons.abc,
@@ -44,7 +47,7 @@ class Homepage extends StatelessWidget {
                       }
                     )),
                       CategoryButton(action: CategoryAction(
-                          color: Colors.white,
+                          color: Color(0xFFEEEEEE),
                           label: "Length",
                           labelColor: Colors.black,
                           iconData: Icons.abc,
@@ -57,7 +60,7 @@ class Homepage extends StatelessWidget {
           ),
                 Row(
                   children: [CategoryButton(action: CategoryAction(
-                      color: Colors.white,
+                      color: Color(0xFFEEEEEE),
                       label: "Temperature",
                       labelColor: Colors.black,
                       iconData: Icons.abc,
@@ -67,7 +70,7 @@ class Homepage extends StatelessWidget {
                       }
                   )),
                     CategoryButton(action: CategoryAction(
-                        color: Colors.white,
+                        color: Color(0xFFEEEEEE),
                         label: "Volume",
                         labelColor: Colors.black,
                         iconData: Icons.abc,
@@ -80,7 +83,7 @@ class Homepage extends StatelessWidget {
                 ),
                 Row(
                   children: [CategoryButton(action: CategoryAction(
-                      color: Colors.white,
+                      color: Color(0xFFEEEEEE),
                       label: "Weight",
                       labelColor: Colors.black,
                       iconData: Icons.abc,
@@ -90,7 +93,7 @@ class Homepage extends StatelessWidget {
                       }
                   )),
                     CategoryButton(action: CategoryAction(
-                        color: Colors.white,
+                        color: Color(0xFFEEEEEE),
                         label: "Speed",
                         labelColor: Colors.black,
                         iconData: Icons.abc,
