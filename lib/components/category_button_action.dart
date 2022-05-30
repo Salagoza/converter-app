@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 class CategoryAction {
@@ -41,7 +40,6 @@ class CategoryButton extends StatelessWidget {
             padding: const EdgeInsets.all(20.0),
           ),
           child: Container(
-
               child: Stack(
             children: <Widget>[
               Align(
@@ -51,7 +49,9 @@ class CategoryButton extends StatelessWidget {
               Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(action.label,
-                      style: TextStyle(color: action.labelColor)))
+                      style: TextStyle(
+                          color: action.labelColor,
+                          fontWeight: FontWeight.bold)))
             ],
           ))),
     ));

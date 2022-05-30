@@ -35,9 +35,9 @@ class HomePage extends StatelessWidget {
                         action: CategoryAction(
                             color: Color(0xFFEEEEEE),
                             label: "Area",
-                            labelColor: Colors.black,
+                            labelColor: Color(0xFF616161),
                             iconData: Icons.crop_landscape_outlined,
-                            iconColor: Colors.green,
+                            iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => const AreaPage()));
@@ -46,9 +46,9 @@ class HomePage extends StatelessWidget {
                         action: CategoryAction(
                             color: Color(0xFFEEEEEE),
                             label: "Length",
-                            labelColor: Colors.black,
+                            labelColor: Color(0xFF616161),
                             iconData: Icons.straighten,
-                            iconColor: Colors.green,
+                            iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => const TestPage()));
@@ -61,9 +61,9 @@ class HomePage extends StatelessWidget {
                         action: CategoryAction(
                             color: Color(0xFFEEEEEE),
                             label: "Temperature",
-                            labelColor: Colors.black,
+                            labelColor: Color(0xFF616161),
                             iconData: Icons.thermostat,
-                            iconColor: Colors.green,
+                            iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => const TestPage()));
@@ -72,9 +72,9 @@ class HomePage extends StatelessWidget {
                         action: CategoryAction(
                             color: Color(0xFFEEEEEE),
                             label: "Volume",
-                            labelColor: Colors.black,
+                            labelColor: Color(0xFF616161),
                             iconData: Icons.science_outlined,
-                            iconColor: Colors.green,
+                            iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => const TestPage()));
@@ -87,9 +87,9 @@ class HomePage extends StatelessWidget {
                         action: CategoryAction(
                             color: Color(0xFFEEEEEE),
                             label: "Weight",
-                            labelColor: Colors.black,
+                            labelColor: Color(0xFF616161),
                             iconData: Icons.fitness_center_rounded,
-                            iconColor: Colors.green,
+                            iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => const TestPage()));
@@ -98,9 +98,9 @@ class HomePage extends StatelessWidget {
                         action: CategoryAction(
                             color: Color(0xFFEEEEEE),
                             label: "Speed",
-                            labelColor: Colors.black,
+                            labelColor: Color(0xFF616161),
                             iconData: Icons.speed,
-                            iconColor: Colors.green,
+                            iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
                                   builder: (_) => const TestPage()));

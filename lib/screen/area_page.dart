@@ -77,33 +77,35 @@ class _AreaPageState extends State<AreaPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: const Color(0xFFEEEEEE),
-                              borderRadius: BorderRadius.circular(10)),
-                          child: TextField(
-                            onChanged: (text) {
-                              var input = double.tryParse(text);
-                              if (input != null) {
-                                setState(() {
-                                  userInput = input;
-                                });
-                              }
-                            },
-                            decoration: const InputDecoration(
-                              filled: true,
-                              hintText: "Input Value to convert",
-                              hintStyle:
-                                  TextStyle(color: Colors.grey, fontSize: 18),
-                              enabledBorder: InputBorder.none,
-                              fillColor: Color(0xFFEEEEEE),
+                        TextField(
+                          onChanged: (text) {
+                            var input = double.tryParse(text);
+                            if (input != null) {
+                              setState(() {
+                                userInput = input;
+                              });
+                            }
+                          },
+                          decoration:  InputDecoration(
+                            contentPadding: const EdgeInsets.all(15),
+                            hintText: "Input Value to convert",
+                            hintStyle:
+                                const TextStyle(color: Colors.grey, fontSize: 18),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(15),
+                              borderSide: BorderSide(
+                                width: 0,
+                                style: BorderStyle.none
+                              )
                             ),
-                            style: const TextStyle(
-                              color: Colors.grey,
-                              fontSize: 18,
-                            ),
-                            keyboardType: TextInputType.number,
+                            filled: true,
+                            fillColor: const Color(0xFFEEEEEE),
                           ),
+                          style: const TextStyle(
+                            color: Colors.black,
+                            fontSize: 18,
+                          ),
+                          keyboardType: TextInputType.number,
                         ),
                         const Align(
                           alignment: Alignment.centerLeft,
@@ -119,25 +121,29 @@ class _AreaPageState extends State<AreaPage> {
                               color: const Color(0xFFEEEEEE),
                               borderRadius: BorderRadius.circular(10)),
                           child: DropdownButtonHideUnderline(
-                            child: DropdownButton(
-                              hint: const Text(
-                                "  Choose a Unit",
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 18),
+                            child: ButtonTheme(
+                              alignedDropdown: true,
+                              child: DropdownButton(
+                                hint: const Text(
+                                  "  Choose a Unit",
+                                  style:
+                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                ),
+                                value: from,
+                                isExpanded: true,
+                                items: areaUnits.map((String value) {
+                                  return DropdownMenuItem(
+                                    value: value,
+                                    child: Text(value),
+
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    from = (value as String?)!;
+                                  });
+                                },
                               ),
-                              value: from,
-                              isExpanded: true,
-                              items: areaUnits.map((String value) {
-                                return DropdownMenuItem(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  from = (value as String?)!;
-                                });
-                              },
                             ),
                           ),
                         ),
@@ -155,25 +161,28 @@ class _AreaPageState extends State<AreaPage> {
                               color: const Color(0xFFEEEEEE),
                               borderRadius: BorderRadius.circular(10)),
                           child: DropdownButtonHideUnderline(
-                            child: DropdownButton(
-                              hint: const Text(
-                                "  Choose a Unit",
-                                style:
-                                    TextStyle(color: Colors.grey, fontSize: 18),
+                            child: ButtonTheme(
+                              alignedDropdown: true,
+                              child: DropdownButton(
+                                hint: const Text(
+                                  "  Choose a Unit",
+                                  style:
+                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                ),
+                                value: to,
+                                isExpanded: true,
+                                items: areaUnits.map((String value) {
+                                  return DropdownMenuItem(
+                                    value: value,
+                                    child: Text(value),
+                                  );
+                                }).toList(),
+                                onChanged: (value) {
+                                  setState(() {
+                                    to = (value as String?)!;
+                                  });
+                                },
                               ),
-                              value: to,
-                              isExpanded: true,
-                              items: areaUnits.map((String value) {
-                                return DropdownMenuItem(
-                                  value: value,
-                                  child: Text(value),
-                                );
-                              }).toList(),
-                              onChanged: (value) {
-                                setState(() {
-                                  to = (value as String?)!;
-                                });
-                              },
                             ),
                           ),
                         ),
