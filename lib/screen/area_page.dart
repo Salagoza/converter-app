@@ -105,8 +105,14 @@ class _AreaPageState extends State<AreaPage> {
                             keyboardType: TextInputType.number,
                           ),
                         ),
-                        const SizedBox(
-                          height: 18.0,
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: SizedBox(
+                                child: Text("From", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),)
+                            ),
+                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -135,8 +141,14 @@ class _AreaPageState extends State<AreaPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 18.0,
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: SizedBox(
+                              child: Text("To", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
+                            ),
+                          ),
                         ),
                         Container(
                           decoration: BoxDecoration(
@@ -166,7 +178,7 @@ class _AreaPageState extends State<AreaPage> {
                           ),
                         ),
                         const SizedBox(
-                          height: 18.0,
+                          height: 18.0
                         ),
                         RawMaterialButton(
                             onPressed: () {
