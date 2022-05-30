@@ -63,7 +63,7 @@ class _AreaPageState extends State<AreaPage> {
                                 fontSize: 18,
                               ),
                               keyboardType: TextInputType.number,
-                             
+
                           ),
                         ),
                         const SizedBox(
