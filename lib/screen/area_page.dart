@@ -66,12 +66,14 @@ class _AreaPageState extends State<AreaPage> {
                               hintText: "Input Value to convert",
                               hintStyle:
                                   TextStyle(color: Colors.grey, fontSize: 18),
+                              enabledBorder: InputBorder.none
                             ),
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 18,
                             ),
                             keyboardType: TextInputType.number,
+
                           ),
                         ),
                         const SizedBox(
@@ -81,25 +83,27 @@ class _AreaPageState extends State<AreaPage> {
                           decoration: BoxDecoration(
                               color: const Color(0xFFEEEEEE),
                               borderRadius: BorderRadius.circular(10)),
-                          child: DropdownButton(
-                            hint: const Text(
-                              "Choose a Unit",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 18),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              hint: const Text(
+                                "Choose a Unit",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 18),
+                              ),
+                              value: from,
+                              isExpanded: true,
+                              items: areaUnits.map((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                setState(() {
+                                  from = value as String?;
+                                });
+                              },
                             ),
-                            value: from,
-                            isExpanded: true,
-                            items: areaUnits.map((String value) {
-                              return DropdownMenuItem(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              setState(() {
-                                from = value as String?;
-                              });
-                            },
                           ),
                         ),
                         const SizedBox(
@@ -109,25 +113,27 @@ class _AreaPageState extends State<AreaPage> {
                           decoration: BoxDecoration(
                               color: const Color(0xFFEEEEEE),
                               borderRadius: BorderRadius.circular(10)),
-                          child: DropdownButton(
-                            hint: const Text(
-                              "Choose a Unit",
-                              style:
-                                  TextStyle(color: Colors.grey, fontSize: 18),
+                          child: DropdownButtonHideUnderline(
+                            child: DropdownButton(
+                              hint: const Text(
+                                "Choose a Unit",
+                                style:
+                                    TextStyle(color: Colors.grey, fontSize: 18),
+                              ),
+                              value: to,
+                              isExpanded: true,
+                              items: areaUnits.map((String value) {
+                                return DropdownMenuItem(
+                                  value: value,
+                                  child: Text(value),
+                                );
+                              }).toList(),
+                              onChanged: (value) {
+                                setState(() {
+                                  to = value as String?;
+                                });
+                              },
                             ),
-                            value: to,
-                            isExpanded: true,
-                            items: areaUnits.map((String value) {
-                              return DropdownMenuItem(
-                                value: value,
-                                child: Text(value),
-                              );
-                            }).toList(),
-                            onChanged: (value) {
-                              setState(() {
-                                to = value as String?;
-                              });
-                            },
                           ),
                         ),
                         const SizedBox(
