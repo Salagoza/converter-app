@@ -77,6 +77,15 @@ class _AreaPageState extends State<AreaPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        const Align(
+                          alignment: Alignment.centerLeft,
+                          child: Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: SizedBox(
+                                child: Text("Value", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
+                            ),
+                          ),
+                        ),
                         TextField(
                           onChanged: (text) {
                             var input = double.tryParse(text);
@@ -86,9 +95,10 @@ class _AreaPageState extends State<AreaPage> {
                               });
                             }
                           },
+
                           decoration:  InputDecoration(
                             contentPadding: const EdgeInsets.all(15),
-                            hintText: "Input Value to convert",
+                            hintText: "Enter a value to convert",
                             hintStyle:
                                 const TextStyle(color: Colors.grey, fontSize: 18),
                             border: OutlineInputBorder(
@@ -125,7 +135,7 @@ class _AreaPageState extends State<AreaPage> {
                               alignedDropdown: true,
                               child: DropdownButton(
                                 hint: const Text(
-                                  "  Choose a Unit",
+                                  "Choose a Unit",
                                   style:
                                       TextStyle(color: Colors.grey, fontSize: 18),
                                 ),
@@ -165,7 +175,7 @@ class _AreaPageState extends State<AreaPage> {
                               alignedDropdown: true,
                               child: DropdownButton(
                                 hint: const Text(
-                                  "  Choose a Unit",
+                                  "Choose a Unit",
                                   style:
                                       TextStyle(color: Colors.grey, fontSize: 18),
                                 ),
