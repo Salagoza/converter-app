@@ -14,7 +14,7 @@ class _AreaPageState extends State<AreaPage> {
   double? userInput;
 
   @override
-  void initState(){
+  void initState() {
     userInput = 0;
     super.initState();
   }
@@ -49,31 +49,38 @@ class _AreaPageState extends State<AreaPage> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEEEEEE),
-                          ),
-                          child: const TextField(
-                              decoration: InputDecoration(
-                                filled: true,
-                                hintText: "Input Value to convert",
-                                hintStyle: TextStyle(color : Colors.grey, fontSize: 18),
-                              ),
-                              style: TextStyle(
-                                color: Colors.grey,
-                                fontSize: 18,
-                              ),
-                              keyboardType: TextInputType.number,
-
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFEEEEEE),
+                              borderRadius: BorderRadius.circular(10)),
+                          child: TextField(
+                            onChanged: (text) {
+                              var input = double.tryParse(text);
+                              if (input != null) {
+                                setState(() {
+                                  userInput = input;
+                                });
+                              }
+                            },
+                            decoration: const InputDecoration(
+                              filled: true,
+                              hintText: "Input Value to convert",
+                              hintStyle:
+                                  TextStyle(color: Colors.grey, fontSize: 18),
+                            ),
+                            style: const TextStyle(
+                              color: Colors.grey,
+                              fontSize: 18,
+                            ),
+                            keyboardType: TextInputType.number,
                           ),
                         ),
                         const SizedBox(
                           height: 18.0,
                         ),
-
                         Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEEEEEE)
-                          ),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFEEEEEE),
+                              borderRadius: BorderRadius.circular(10)),
                           child: DropdownButton(
                             hint: const Text(
                               "Choose a Unit",
@@ -99,9 +106,9 @@ class _AreaPageState extends State<AreaPage> {
                           height: 18.0,
                         ),
                         Container(
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFEEEEEE),
-                          ),
+                          decoration: BoxDecoration(
+                              color: const Color(0xFFEEEEEE),
+                              borderRadius: BorderRadius.circular(10)),
                           child: DropdownButton(
                             hint: const Text(
                               "Choose a Unit",
@@ -122,6 +129,35 @@ class _AreaPageState extends State<AreaPage> {
                               });
                             },
                           ),
+                        ),
+                        const SizedBox(
+                          height: 18.0,
+                        ),
+                        RawMaterialButton(
+                            onPressed: () {},
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              alignment: AlignmentDirectional.center,
+                              width: 200,
+                              height: 70,
+                              child: const Text(
+                                "Convert",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 40,
+                                    color: Colors.white),
+                              ),
+                            )),
+                        const SizedBox(
+                          height: 18.0,
+                        ),
+                        const Text(
+                          "Result",
+                          style: TextStyle(
+                              fontSize: 30, fontWeight: FontWeight.bold),
                         )
                       ],
                     ),
