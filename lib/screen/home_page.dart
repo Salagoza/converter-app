@@ -36,7 +36,7 @@ class HomePage extends StatelessWidget {
                             color: Color(0xFFEEEEEE),
                             label: "Area",
                             labelColor: Colors.black,
-                            iconData: Icons.abc,
+                            iconData: Icons.crop_landscape_outlined,
                             iconColor: Colors.green,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                             color: Color(0xFFEEEEEE),
                             label: "Length",
                             labelColor: Colors.black,
-                            iconData: Icons.abc,
+                            iconData: Icons.straighten,
                             iconColor: Colors.green,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -62,7 +62,7 @@ class HomePage extends StatelessWidget {
                             color: Color(0xFFEEEEEE),
                             label: "Temperature",
                             labelColor: Colors.black,
-                            iconData: Icons.abc,
+                            iconData: Icons.thermostat,
                             iconColor: Colors.green,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
                             color: Color(0xFFEEEEEE),
                             label: "Volume",
                             labelColor: Colors.black,
-                            iconData: Icons.abc,
+                            iconData: Icons.science_outlined,
                             iconColor: Colors.green,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -88,7 +88,7 @@ class HomePage extends StatelessWidget {
                             color: Color(0xFFEEEEEE),
                             label: "Weight",
                             labelColor: Colors.black,
-                            iconData: Icons.abc,
+                            iconData: Icons.fitness_center_rounded,
                             iconColor: Colors.green,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
@@ -99,7 +99,7 @@ class HomePage extends StatelessWidget {
                             color: Color(0xFFEEEEEE),
                             label: "Speed",
                             labelColor: Colors.black,
-                            iconData: Icons.abc,
+                            iconData: Icons.speed,
                             iconColor: Colors.green,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
