@@ -93,7 +93,7 @@ class _AreaPageState extends State<AreaPage> {
                                 const TextStyle(color: Colors.grey, fontSize: 18),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(15),
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 width: 0,
                                 style: BorderStyle.none
                               )
