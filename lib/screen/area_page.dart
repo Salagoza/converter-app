@@ -8,15 +8,44 @@ class AreaPage extends StatefulWidget {
 }
 
 class _AreaPageState extends State<AreaPage> {
-  List<String> areaUnits = ["Test1", "Test2"];
+  List<String> areaUnits = ["Square Feet", "Square Meters"];
   String? from;
+
   String? to;
   double? userInput;
+  String? resultMessage;
 
   @override
   void initState() {
     userInput = 0;
     super.initState();
+  }
+
+  final Map<String, int> areaUnitMap = {
+    "Square Feet": 0,
+    "Square Meters": 1,
+  };
+
+  dynamic formulas = {
+    "0": [1, 0.09290304],
+    "1": [10.7639104, 1]
+  };
+
+  void convert(double value, String from, String to) {
+    int? nFrom = areaUnitMap[from];
+    int? nTo = areaUnitMap[to];
+    var multi = formulas[nFrom.toString()][nTo];
+    var result = value * multi;
+
+    if (result == 0) {
+      resultMessage = "Can't Perform the conversion";
+    } else {
+      resultMessage = "${result.toString()} $to";
+    }
+
+    setState(() {
+      resultMessage = resultMessage;
+    });
   }
 
   @override
@@ -66,14 +95,14 @@ class _AreaPageState extends State<AreaPage> {
                               hintText: "Input Value to convert",
                               hintStyle:
                                   TextStyle(color: Colors.grey, fontSize: 18),
-                              enabledBorder: InputBorder.none
+                              enabledBorder: InputBorder.none,
+                              fillColor: Color(0xFFEEEEEE),
                             ),
                             style: const TextStyle(
                               color: Colors.grey,
                               fontSize: 18,
                             ),
                             keyboardType: TextInputType.number,
-
                           ),
                         ),
                         const SizedBox(
@@ -86,7 +115,7 @@ class _AreaPageState extends State<AreaPage> {
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton(
                               hint: const Text(
-                                "Choose a Unit",
+                                "  Choose a Unit",
                                 style:
                                     TextStyle(color: Colors.grey, fontSize: 18),
                               ),
@@ -100,7 +129,7 @@ class _AreaPageState extends State<AreaPage> {
                               }).toList(),
                               onChanged: (value) {
                                 setState(() {
-                                  from = value as String?;
+                                  from = (value as String?)!;
                                 });
                               },
                             ),
@@ -116,7 +145,7 @@ class _AreaPageState extends State<AreaPage> {
                           child: DropdownButtonHideUnderline(
                             child: DropdownButton(
                               hint: const Text(
-                                "Choose a Unit",
+                                "  Choose a Unit",
                                 style:
                                     TextStyle(color: Colors.grey, fontSize: 18),
                               ),
@@ -130,7 +159,7 @@ class _AreaPageState extends State<AreaPage> {
                               }).toList(),
                               onChanged: (value) {
                                 setState(() {
-                                  to = value as String?;
+                                  to = (value as String?)!;
                                 });
                               },
                             ),
@@ -140,7 +169,15 @@ class _AreaPageState extends State<AreaPage> {
                           height: 18.0,
                         ),
                         RawMaterialButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              if (from == null ||
+                                  to == null ||
+                                  userInput == 0) {
+                                return;
+                              } else {
+                                convert(userInput!, from!, to!);
+                              }
+                            },
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.grey,
@@ -160,9 +197,11 @@ class _AreaPageState extends State<AreaPage> {
                         const SizedBox(
                           height: 18.0,
                         ),
-                        const Text(
-                          "Result",
-                          style: TextStyle(
+                        Text(
+                          (resultMessage.toString() == "null")
+                              ? ""
+                              : resultMessage.toString(),
+                          style: const TextStyle(
                               fontSize: 30, fontWeight: FontWeight.bold),
                         )
                       ],
