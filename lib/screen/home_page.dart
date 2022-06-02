@@ -1,3 +1,4 @@
+import 'package:converter_app/screen/temperature_page.dart';
 import 'package:converter_app/screen/test_page.dart';
 import 'package:converter_app/screen/volume_page.dart';
 import 'package:flutter/material.dart';
@@ -68,7 +69,7 @@ class HomePage extends StatelessWidget {
                             iconColor: Colors.grey,
                             callback: (context) {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (_) => const TestPage()));
+                                  builder: (_) => const TemperaturePage()));
                             })),
                     CategoryButton(
                         action: CategoryAction(
