@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class VolumePage extends StatefulWidget {
-  const VolumePage({Key? key}) : super(key: key);
+class WeightPage extends StatefulWidget {
+  const WeightPage({Key? key}) : super(key: key);
 
   @override
-  State<VolumePage> createState() => _VolumePageState();
+  State<WeightPage> createState() => _WeightPageState();
 }
 
-class _VolumePageState extends State<VolumePage> {
-  List<String> volumeUnits = ["Milliliter","liter","cubic meter","cubic inch","cubic feet", "pint", "quart", "gallon", "barrel"];
+class _WeightPageState extends State<WeightPage> {
+  List<String> weightUnits = ["Grams","Kilograms","Metric tonnes", "Pounds","Ounces"];
   String? from;
 
   String? to;
@@ -21,33 +21,25 @@ class _VolumePageState extends State<VolumePage> {
     super.initState();
   }
 
-  final Map<String, int> volumeUnitMap = {
-    "Milliliter": 0,
-    "liter": 1,
-    "cubic meter": 2,
-    "cubic inch" : 3,
-    "cubic feet":4,
-    "pint": 5,
-    "quart": 6,
-    "gallon": 7,
-    "barrel": 8,
+  final Map<String, int> weightUnitMap = {
+    "Grams" : 0,
+    "Kilograms" : 1,
+    "Metric tonnes" : 2,
+    "Pounds" : 3,
+    "Ounces" : 4
   };
 
   dynamic formulas = {
-    "0": [1,0.001,0.000001,0.061023744094732,0.000035314666721489,0.0021133764188652,0.0010566882094326,0.00026417205235815,0.0000083864143605761],
-    "1": [1000,1,0.001,61.023744094732,0.035314666721489,2.1133764188652,1.0566882094326,0.26417205235815,0.0083864143605761],
-    "2": [1000000,1000,1,61023.744094732,35.314666721489,2113.3764188652,1056.6882094326,264.17205235815,8.3864143605761],
-    "3": [16.387064,0.016387064,0.000016387064,1,0.0005787037037037,0.034632034632035,0.017316017316017,0.0043290043290043,0.00013742870885728],
-    "4": [28316.846592,28.316846592,0.028316846592,1728,1,59.844155844156,29.922077922078,7.4805194805195,0.23747680890538],
-    "5": [473.176473,0.473176473,0.000473176473,28.875,0.016710069444444,1,0.5,0.125,0.003968253968254],
-    "6": [946.352946,0.946352946,0.000946352946,57.75,0.033420138888889,2,1,0.25,0.0079365079365079],
-    "7": [3785.411784,3.785411784,0.003785411784,231,0.13368055555556,8,4,1,0.031746031746032],
-    "8": [119240.471196,119.240471196,0.119240471196,7276.5,4.2109375,252,126,31.5,1]
+    "0": [1, 0.001,0.000001,0.002205,0.035273],
+    "1": [1000,1,0.001,2.204586,35.27337],
+    "2": [10000,1000,1,2204.586,35273.37],
+    "3": [453.6,0.4536,0.000454,1,16],
+    "4": [28,0.02835,0.00028,0.0625,1]
   };
 
   void convert(double value, String from, String to) {
-    int? nFrom = volumeUnitMap[from];
-    int? nTo = volumeUnitMap[to];
+    int? nFrom = weightUnitMap[from];
+    int? nTo = weightUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
     var result = value * multi;
 
@@ -77,7 +69,7 @@ class _VolumePageState extends State<VolumePage> {
                   height: 80.0,
                   width: 400.0,
                   child: Center(
-                    child: Text("Volume Converter",
+                    child: Text("Weight Converter",
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 32,
@@ -155,7 +147,7 @@ class _VolumePageState extends State<VolumePage> {
                                 ),
                                 value: from,
                                 isExpanded: true,
-                                items: volumeUnits.map((String value) {
+                                items: weightUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),
@@ -195,7 +187,7 @@ class _VolumePageState extends State<VolumePage> {
                                 ),
                                 value: to,
                                 isExpanded: true,
-                                items: volumeUnits.map((String value) {
+                                items: weightUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),

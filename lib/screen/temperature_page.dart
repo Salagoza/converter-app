@@ -8,7 +8,7 @@ class TemperaturePage extends StatefulWidget {
 }
 
 class _TemperaturePageState extends State<TemperaturePage> {
-  List<String> areaUnits = ["Degree Celsius","Degree Fahrenheit"];
+  List<String> temperatureUnits = ["Degree Celsius","Degree Fahrenheit"];
   String? from;
 
   String? to;
@@ -140,7 +140,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                                 ),
                                 value: from,
                                 isExpanded: true,
-                                items: areaUnits.map((String value) {
+                                items: temperatureUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),
@@ -180,7 +180,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                                 ),
                                 value: to,
                                 isExpanded: true,
-                                items: areaUnits.map((String value) {
+                                items: temperatureUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),

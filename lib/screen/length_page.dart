@@ -8,7 +8,7 @@ class LengthPage extends StatefulWidget {
 }
 
 class _LengthPageState extends State<LengthPage> {
-  List<String> areaUnits = ["Millimeter","Centimeter","Meter","Kilometer", "inch", "foot", "yard", "mile"];
+  List<String> lengthUnits = ["Millimeter","Centimeter","Meter","Kilometer", "inch", "foot", "yard", "mile"];
   String? from;
 
   String? to;
@@ -153,7 +153,7 @@ class _LengthPageState extends State<LengthPage> {
                                 ),
                                 value: from,
                                 isExpanded: true,
-                                items: areaUnits.map((String value) {
+                                items: lengthUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),
@@ -193,7 +193,7 @@ class _LengthPageState extends State<LengthPage> {
                                 ),
                                 value: to,
                                 isExpanded: true,
-                                items: areaUnits.map((String value) {
+                                items: lengthUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),

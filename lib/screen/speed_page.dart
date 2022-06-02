@@ -8,7 +8,7 @@ class SpeedPage extends StatefulWidget {
 }
 
 class _SpeedPageState extends State<SpeedPage> {
-  List<String> areaUnits = ["Meter/second","Meter/minute","Kilometer/hour","Foot/second", "Foot/minute", "Miles/hour"];
+  List<String> speedUnits = ["Meter/second","Meter/minute","Kilometer/hour","Foot/second", "Foot/minute", "Miles/hour"];
   String? from;
 
   String? to;
@@ -149,7 +149,7 @@ class _SpeedPageState extends State<SpeedPage> {
                                 ),
                                 value: from,
                                 isExpanded: true,
-                                items: areaUnits.map((String value) {
+                                items: speedUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),
@@ -189,7 +189,7 @@ class _SpeedPageState extends State<SpeedPage> {
                                 ),
                                 value: to,
                                 isExpanded: true,
-                                items: areaUnits.map((String value) {
+                                items: speedUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
                                     child: Text(value),
