@@ -8,7 +8,7 @@ class AreaPage extends StatefulWidget {
 }
 
 class _AreaPageState extends State<AreaPage> {
-  List<String> areaUnits = ["Square Feet", "Square Meters"];
+  List<String> areaUnits = ["Millimeter Square", "Centimeter Square", "Meter Square", "Inch Square", "Foot Square", "Yard Square"];
   String? from;
 
   String? to;
@@ -22,13 +22,22 @@ class _AreaPageState extends State<AreaPage> {
   }
 
   final Map<String, int> areaUnitMap = {
-    "Square Feet": 0,
-    "Square Meters": 1,
+    "Millimeter Square": 0,
+    "Centimeter Square": 1,
+    "Meter Square": 2,
+    "Inch Square": 3,
+    "Foot Square": 4,
+    "Yard Square": 5,
+
   };
 
   dynamic formulas = {
-    "0": [1, 0.09290304],
-    "1": [10.7639104, 1]
+    "0": [1, 0.01,0.00001,0.00155,0.000011,0.000001],
+    "1": [100, 1,0.0001,0.155,0.001076,0.00012],
+    "2": [1000000, 10000,1,1550.003,10.76391,1.19599],
+    "3": [645.16, 6.2516,0.000645,1,0.006944,0.000772],
+    "4": [92903, 929.0304,0.092903,144,1,0.111111],
+    "5": [836127, 8361.274,0.836127,1296,9,1],
   };
 
   void convert(double value, String from, String to) {
