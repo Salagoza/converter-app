@@ -62,7 +62,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                   height: 80.0,
                   width: 400.0,
                   child: Center(
-                    child: Text("Area Converter",
+                    child: Text("Temperature Converter",
                         style: TextStyle(
                           color: Colors.grey,
                           fontSize: 32,
