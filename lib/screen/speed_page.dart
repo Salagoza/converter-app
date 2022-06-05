@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SpeedPage extends StatefulWidget {
   const SpeedPage({Key? key}) : super(key: key);
@@ -8,7 +9,14 @@ class SpeedPage extends StatefulWidget {
 }
 
 class _SpeedPageState extends State<SpeedPage> {
-  List<String> speedUnits = ["Meter/second","Meter/minute","Kilometer/hour","Foot/second", "Foot/minute", "Miles/hour"];
+  List<String> speedUnits = [
+    "Meter/second",
+    "Meter/minute",
+    "Kilometer/hour",
+    "Foot/second",
+    "Foot/minute",
+    "Miles/hour"
+  ];
   String? from;
 
   String? to;
@@ -25,18 +33,18 @@ class _SpeedPageState extends State<SpeedPage> {
     "Meter/second": 0,
     "Meter/minute": 1,
     "Kilometer/hour": 2,
-    "Foot/second":3,
+    "Foot/second": 3,
     "Foot/minute": 4,
     "Miles/hour": 5
   };
 
   dynamic formulas = {
-    "0": [1, 59.988,3.599712,3.28084,196.8504,2.237136],
-    "1": [0.01667,1,0.06007,0.054692,3.281496,0.037293],
-    "2": [0.2778,16.66467,1,0.911417,54.68504,0.621477],
-    "3": [0.3048,18.28434,1.097192,1,60,0.681879],
-    "4": [0.00508,0.304739,0.018287,0.016667,1,0.011365],
-    "5": [0.447,26.81464,1.609071,1.466535,87.99213,1],
+    "0": [1, 59.988, 3.599712, 3.28084, 196.8504, 2.237136],
+    "1": [0.01667, 1, 0.06007, 0.054692, 3.281496, 0.037293],
+    "2": [0.2778, 16.66467, 1, 0.911417, 54.68504, 0.621477],
+    "3": [0.3048, 18.28434, 1.097192, 1, 60, 0.681879],
+    "4": [0.00508, 0.304739, 0.018287, 0.016667, 1, 0.011365],
+    "5": [0.447, 26.81464, 1.609071, 1.466535, 87.99213, 1],
   };
 
   void convert(double value, String from, String to) {
@@ -67,15 +75,15 @@ class _SpeedPageState extends State<SpeedPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 80.0,
                   width: 400.0,
                   child: Center(
                     child: Text("Speed Converter",
-                        style: TextStyle(
+                        style: GoogleFonts.comfortaa(
                           color: Colors.grey,
                           fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w900,
                         )),
                   ),
                 ),
@@ -85,13 +93,19 @@ class _SpeedPageState extends State<SpeedPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("Value", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "Value",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         TextField(
@@ -103,19 +117,15 @@ class _SpeedPageState extends State<SpeedPage> {
                               });
                             }
                           },
-
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             contentPadding: const EdgeInsets.all(15),
                             hintText: "Enter a value to convert",
-                            hintStyle:
-                                const TextStyle(color: Colors.grey, fontSize: 18),
+                            hintStyle: GoogleFonts.comfortaa(
+                                color: Colors.grey, fontSize: 18),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                width: 0,
-                                style: BorderStyle.none
-                              )
-                            ),
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
                             filled: true,
                             fillColor: const Color(0xFFEEEEEE),
                           ),
@@ -125,13 +135,18 @@ class _SpeedPageState extends State<SpeedPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("From", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),)
-                            ),
+                                child: Text(
+                              "From",
+                              style: GoogleFonts.comfortaa(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900),
+                            )),
                           ),
                         ),
                         Container(
@@ -142,18 +157,18 @@ class _SpeedPageState extends State<SpeedPage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: from,
                                 isExpanded: true,
                                 items: speedUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
-
+                                    child: Text(value,
+                                        style: GoogleFonts.comfortaa()),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -165,13 +180,19 @@ class _SpeedPageState extends State<SpeedPage> {
                             ),
                           ),
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                              child: Text("To", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "To",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         Container(
@@ -182,17 +203,18 @@ class _SpeedPageState extends State<SpeedPage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: to,
                                 isExpanded: true,
                                 items: speedUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
+                                    child: Text(value,
+                                        style: GoogleFonts.comfortaa()),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -204,9 +226,7 @@ class _SpeedPageState extends State<SpeedPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 18.0
-                        ),
+                        const SizedBox(height: 18.0),
                         RawMaterialButton(
                             onPressed: () {
                               if (from == null ||
@@ -225,11 +245,11 @@ class _SpeedPageState extends State<SpeedPage> {
                               alignment: AlignmentDirectional.center,
                               width: 200,
                               height: 70,
-                              child: const Text(
+                              child: Text(
                                 "Convert",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                style: GoogleFonts.comfortaa(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 32,
                                     color: Colors.white),
                               ),
                             )),
@@ -241,7 +261,7 @@ class _SpeedPageState extends State<SpeedPage> {
                               ? ""
                               : resultMessage.toString(),
                           style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: 30, fontWeight: FontWeight.w900),
                         )
                       ],
                     ),

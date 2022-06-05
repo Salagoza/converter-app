@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class WeightPage extends StatefulWidget {
   const WeightPage({Key? key}) : super(key: key);
@@ -8,7 +9,13 @@ class WeightPage extends StatefulWidget {
 }
 
 class _WeightPageState extends State<WeightPage> {
-  List<String> weightUnits = ["Grams","Kilograms","Metric tonnes", "Pounds","Ounces"];
+  List<String> weightUnits = [
+    "Grams",
+    "Kilograms",
+    "Metric tonnes",
+    "Pounds",
+    "Ounces"
+  ];
   String? from;
 
   String? to;
@@ -22,19 +29,19 @@ class _WeightPageState extends State<WeightPage> {
   }
 
   final Map<String, int> weightUnitMap = {
-    "Grams" : 0,
-    "Kilograms" : 1,
-    "Metric tonnes" : 2,
-    "Pounds" : 3,
-    "Ounces" : 4
+    "Grams": 0,
+    "Kilograms": 1,
+    "Metric tonnes": 2,
+    "Pounds": 3,
+    "Ounces": 4
   };
 
   dynamic formulas = {
-    "0": [1, 0.001,0.000001,0.002205,0.035273],
-    "1": [1000,1,0.001,2.204586,35.27337],
-    "2": [10000,1000,1,2204.586,35273.37],
-    "3": [453.6,0.4536,0.000454,1,16],
-    "4": [28,0.02835,0.00028,0.0625,1]
+    "0": [1, 0.001, 0.000001, 0.002205, 0.035273],
+    "1": [1000, 1, 0.001, 2.204586, 35.27337],
+    "2": [10000, 1000, 1, 2204.586, 35273.37],
+    "3": [453.6, 0.4536, 0.000454, 1, 16],
+    "4": [28, 0.02835, 0.00028, 0.0625, 1]
   };
 
   void convert(double value, String from, String to) {
@@ -65,15 +72,15 @@ class _WeightPageState extends State<WeightPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 80.0,
                   width: 400.0,
                   child: Center(
                     child: Text("Weight Converter",
-                        style: TextStyle(
+                        style: GoogleFonts.comfortaa(
                           color: Colors.grey,
                           fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w900,
                         )),
                   ),
                 ),
@@ -83,13 +90,19 @@ class _WeightPageState extends State<WeightPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("Value", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "Value",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         TextField(
@@ -101,35 +114,36 @@ class _WeightPageState extends State<WeightPage> {
                               });
                             }
                           },
-
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             contentPadding: const EdgeInsets.all(15),
                             hintText: "Enter a value to convert",
-                            hintStyle:
-                                const TextStyle(color: Colors.grey, fontSize: 18),
+                            hintStyle: GoogleFonts.comfortaa(
+                                color: Colors.grey, fontSize: 18),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                width: 0,
-                                style: BorderStyle.none
-                              )
-                            ),
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
                             filled: true,
                             fillColor: const Color(0xFFEEEEEE),
                           ),
-                          style: const TextStyle(
+                          style: GoogleFonts.comfortaa(
                             color: Colors.black,
                             fontSize: 18,
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("From", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),)
-                            ),
+                                child: Text(
+                              "From",
+                              style: GoogleFonts.comfortaa(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900),
+                            )),
                           ),
                         ),
                         Container(
@@ -140,18 +154,18 @@ class _WeightPageState extends State<WeightPage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: from,
                                 isExpanded: true,
                                 items: weightUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
-
+                                    child: Text(value,
+                                        style: GoogleFonts.comfortaa()),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -163,13 +177,19 @@ class _WeightPageState extends State<WeightPage> {
                             ),
                           ),
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                              child: Text("To", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "To",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         Container(
@@ -180,17 +200,18 @@ class _WeightPageState extends State<WeightPage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: to,
                                 isExpanded: true,
                                 items: weightUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
+                                    child: Text(value,
+                                        style: GoogleFonts.comfortaa()),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -202,9 +223,7 @@ class _WeightPageState extends State<WeightPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 18.0
-                        ),
+                        const SizedBox(height: 18.0),
                         RawMaterialButton(
                             onPressed: () {
                               if (from == null ||
@@ -223,11 +242,11 @@ class _WeightPageState extends State<WeightPage> {
                               alignment: AlignmentDirectional.center,
                               width: 200,
                               height: 70,
-                              child: const Text(
+                              child: Text(
                                 "Convert",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                style: GoogleFonts.comfortaa(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 32,
                                     color: Colors.white),
                               ),
                             )),
@@ -238,8 +257,8 @@ class _WeightPageState extends State<WeightPage> {
                           (resultMessage.toString() == "null")
                               ? ""
                               : resultMessage.toString(),
-                          style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.comfortaa(
+                              fontSize: 30, fontWeight: FontWeight.w900),
                         )
                       ],
                     ),

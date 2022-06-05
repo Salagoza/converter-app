@@ -1,12 +1,12 @@
 import 'package:converter_app/screen/speed_page.dart';
 import 'package:converter_app/screen/temperature_page.dart';
-import 'package:converter_app/screen/test_page.dart';
 import 'package:converter_app/screen/volume_page.dart';
 import 'package:converter_app/screen/weight_page.dart';
 import 'package:flutter/material.dart';
 import 'area_page.dart';
 import '../components/category_button_action.dart';
 import 'length_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -22,15 +22,15 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 80.0,
                   width: 400.0,
                   child: Center(
                     child: Text("Unit Converter",
-                        style: TextStyle(
+                        style: GoogleFonts.comfortaa(
                           color: Colors.grey,
                           fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w900,
                         )),
                   ),
                 ),

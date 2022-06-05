@@ -1,5 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class CategoryAction {
   final Color color;
@@ -49,7 +50,7 @@ class CategoryButton extends StatelessWidget {
               Align(
                   alignment: Alignment.bottomCenter,
                   child: Text(action.label,
-                      style: TextStyle(
+                      style: GoogleFonts.comfortaa(
                           color: action.labelColor,
                           fontWeight: FontWeight.bold)))
             ],

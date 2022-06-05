@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class AreaPage extends StatefulWidget {
   const AreaPage({Key? key}) : super(key: key);
@@ -8,7 +9,14 @@ class AreaPage extends StatefulWidget {
 }
 
 class _AreaPageState extends State<AreaPage> {
-  List<String> areaUnits = ["Millimeter Square", "Centimeter Square", "Meter Square", "Inch Square", "Foot Square", "Yard Square"];
+  List<String> areaUnits = [
+    "Millimeter Square",
+    "Centimeter Square",
+    "Meter Square",
+    "Inch Square",
+    "Foot Square",
+    "Yard Square"
+  ];
   String? from;
 
   String? to;
@@ -28,16 +36,15 @@ class _AreaPageState extends State<AreaPage> {
     "Inch Square": 3,
     "Foot Square": 4,
     "Yard Square": 5,
-
   };
 
   dynamic formulas = {
-    "0": [1, 0.01,0.00001,0.00155,0.000011,0.000001],
-    "1": [100, 1,0.0001,0.155,0.001076,0.00012],
-    "2": [1000000, 10000,1,1550.003,10.76391,1.19599],
-    "3": [645.16, 6.2516,0.000645,1,0.006944,0.000772],
-    "4": [92903, 929.0304,0.092903,144,1,0.111111],
-    "5": [836127, 8361.274,0.836127,1296,9,1],
+    "0": [1, 0.01, 0.00001, 0.00155, 0.000011, 0.000001],
+    "1": [100, 1, 0.0001, 0.155, 0.001076, 0.00012],
+    "2": [1000000, 10000, 1, 1550.003, 10.76391, 1.19599],
+    "3": [645.16, 6.2516, 0.000645, 1, 0.006944, 0.000772],
+    "4": [92903, 929.0304, 0.092903, 144, 1, 0.111111],
+    "5": [836127, 8361.274, 0.836127, 1296, 9, 1],
   };
 
   void convert(double value, String from, String to) {
@@ -68,15 +75,15 @@ class _AreaPageState extends State<AreaPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 80.0,
                   width: 400.0,
                   child: Center(
                     child: Text("Area Converter",
-                        style: TextStyle(
+                        style: GoogleFonts.comfortaa(
                           color: Colors.grey,
                           fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w900,
                         )),
                   ),
                 ),
@@ -86,13 +93,19 @@ class _AreaPageState extends State<AreaPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("Value", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "Value",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         TextField(
@@ -104,19 +117,15 @@ class _AreaPageState extends State<AreaPage> {
                               });
                             }
                           },
-
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             contentPadding: const EdgeInsets.all(15),
                             hintText: "Enter a value to convert",
-                            hintStyle:
-                                const TextStyle(color: Colors.grey, fontSize: 18),
+                            hintStyle: GoogleFonts.comfortaa(
+                                color: Colors.grey, fontSize: 18),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                width: 0,
-                                style: BorderStyle.none
-                              )
-                            ),
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
                             filled: true,
                             fillColor: const Color(0xFFEEEEEE),
                           ),
@@ -126,13 +135,18 @@ class _AreaPageState extends State<AreaPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("From", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),)
-                            ),
+                                child: Text(
+                              "From",
+                              style: GoogleFonts.comfortaa(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900),
+                            )),
                           ),
                         ),
                         Container(
@@ -143,18 +157,20 @@ class _AreaPageState extends State<AreaPage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: from,
                                 isExpanded: true,
                                 items: areaUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
-
+                                    child: Text(
+                                      value,
+                                      style: GoogleFonts.comfortaa(),
+                                    ),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -166,13 +182,19 @@ class _AreaPageState extends State<AreaPage> {
                             ),
                           ),
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                              child: Text("To", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "To",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         Container(
@@ -183,17 +205,20 @@ class _AreaPageState extends State<AreaPage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: to,
                                 isExpanded: true,
                                 items: areaUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
+                                    child: Text(
+                                      value,
+                                      style: GoogleFonts.comfortaa(),
+                                    ),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -205,9 +230,7 @@ class _AreaPageState extends State<AreaPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 18.0
-                        ),
+                        const SizedBox(height: 18.0),
                         RawMaterialButton(
                             onPressed: () {
                               if (from == null ||
@@ -226,11 +249,11 @@ class _AreaPageState extends State<AreaPage> {
                               alignment: AlignmentDirectional.center,
                               width: 200,
                               height: 70,
-                              child: const Text(
+                              child: Text(
                                 "Convert",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                style: GoogleFonts.comfortaa(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 32,
                                     color: Colors.white),
                               ),
                             )),
@@ -241,8 +264,10 @@ class _AreaPageState extends State<AreaPage> {
                           (resultMessage.toString() == "null")
                               ? ""
                               : resultMessage.toString(),
-                          style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                          style: GoogleFonts.comfortaa(
+                            fontSize: 30,
+                            fontWeight: FontWeight.w900,
+                          ),
                         )
                       ],
                     ),

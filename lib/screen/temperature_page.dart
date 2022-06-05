@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class TemperaturePage extends StatefulWidget {
   const TemperaturePage({Key? key}) : super(key: key);
@@ -8,7 +9,7 @@ class TemperaturePage extends StatefulWidget {
 }
 
 class _TemperaturePageState extends State<TemperaturePage> {
-  List<String> temperatureUnits = ["Degree Celsius","Degree Fahrenheit"];
+  List<String> temperatureUnits = ["Degree Celsius", "Degree Fahrenheit"];
   String? from;
 
   String? to;
@@ -30,17 +31,17 @@ class _TemperaturePageState extends State<TemperaturePage> {
     int? nFrom = temperatureUnitMap[from];
     int? nTo = temperatureUnitMap[to];
 
-    if (nFrom == 0 && nTo == 1){ // converting from Celsius to fahrenheit
-      var result = (value * 9)/5 + 32;
+    if (nFrom == 0 && nTo == 1) {
+      // converting from Celsius to fahrenheit
+      var result = (value * 9) / 5 + 32;
       resultMessage = "${result.toString()} $to";
-
-    }else if (nFrom == 1 && nTo == 0){
-      var result = (value - 32) * 5/9; // converting from fahrenheit to Celsius
+    } else if (nFrom == 1 && nTo == 0) {
+      var result =
+          (value - 32) * 5 / 9; // converting from fahrenheit to Celsius
       resultMessage = "${result.toString()} $to";
-    }else{
+    } else {
       resultMessage = "Can't Perform the conversion";
     }
-
 
     setState(() {
       resultMessage = resultMessage;
@@ -58,15 +59,15 @@ class _TemperaturePageState extends State<TemperaturePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SizedBox(
+                SizedBox(
                   height: 80.0,
                   width: 400.0,
                   child: Center(
                     child: Text("Temperature Converter",
-                        style: TextStyle(
+                        style: GoogleFonts.comfortaa(
                           color: Colors.grey,
-                          fontSize: 32,
-                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                          fontWeight: FontWeight.w900,
                         )),
                   ),
                 ),
@@ -76,13 +77,19 @@ class _TemperaturePageState extends State<TemperaturePage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("Value", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "Value",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         TextField(
@@ -94,19 +101,15 @@ class _TemperaturePageState extends State<TemperaturePage> {
                               });
                             }
                           },
-
-                          decoration:  InputDecoration(
+                          decoration: InputDecoration(
                             contentPadding: const EdgeInsets.all(15),
                             hintText: "Enter a value to convert",
-                            hintStyle:
-                                const TextStyle(color: Colors.grey, fontSize: 18),
+                            hintStyle: GoogleFonts.comfortaa(
+                                color: Colors.grey, fontSize: 18),
                             border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              borderSide: const BorderSide(
-                                width: 0,
-                                style: BorderStyle.none
-                              )
-                            ),
+                                borderRadius: BorderRadius.circular(15),
+                                borderSide: const BorderSide(
+                                    width: 0, style: BorderStyle.none)),
                             filled: true,
                             fillColor: const Color(0xFFEEEEEE),
                           ),
@@ -116,13 +119,18 @@ class _TemperaturePageState extends State<TemperaturePage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                                child: Text("From", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold),)
-                            ),
+                                child: Text(
+                              "From",
+                              style: GoogleFonts.comfortaa(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900),
+                            )),
                           ),
                         ),
                         Container(
@@ -133,18 +141,18 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: from,
                                 isExpanded: true,
                                 items: temperatureUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
-
+                                    child: Text(value,
+                                        style: GoogleFonts.comfortaa()),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -156,13 +164,19 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             ),
                           ),
                         ),
-                        const Align(
+                        Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
                             padding: EdgeInsets.all(8.0),
                             child: SizedBox(
-                              child: Text("To", style: TextStyle(color: Colors.grey, fontSize: 18, fontWeight: FontWeight.bold,),)
-                            ),
+                                child: Text(
+                              "To",
+                              style: GoogleFonts.comfortaa(
+                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w900,
+                              ),
+                            )),
                           ),
                         ),
                         Container(
@@ -173,17 +187,20 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             child: ButtonTheme(
                               alignedDropdown: true,
                               child: DropdownButton(
-                                hint: const Text(
+                                hint: Text(
                                   "Choose a Unit",
-                                  style:
-                                      TextStyle(color: Colors.grey, fontSize: 18),
+                                  style: GoogleFonts.comfortaa(
+                                      color: Colors.grey, fontSize: 18),
                                 ),
                                 value: to,
                                 isExpanded: true,
                                 items: temperatureUnits.map((String value) {
                                   return DropdownMenuItem(
                                     value: value,
-                                    child: Text(value),
+                                    child: Text(
+                                      value,
+                                      style: GoogleFonts.comfortaa(),
+                                    ),
                                   );
                                 }).toList(),
                                 onChanged: (value) {
@@ -195,9 +212,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 18.0
-                        ),
+                        const SizedBox(height: 18.0),
                         RawMaterialButton(
                             onPressed: () {
                               if (from == null ||
@@ -216,11 +231,11 @@ class _TemperaturePageState extends State<TemperaturePage> {
                               alignment: AlignmentDirectional.center,
                               width: 200,
                               height: 70,
-                              child: const Text(
+                              child: Text(
                                 "Convert",
-                                style: TextStyle(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 40,
+                                style: GoogleFonts.comfortaa(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 32,
                                     color: Colors.white),
                               ),
                             )),
@@ -232,7 +247,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                               ? ""
                               : resultMessage.toString(),
                           style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.bold),
+                              fontSize: 30, fontWeight: FontWeight.w900),
                         )
                       ],
                     ),
