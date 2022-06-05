@@ -14,10 +14,10 @@ class _LengthPageState extends State<LengthPage> {
     "Centimeter",
     "Meter",
     "Kilometer",
-    "inch",
-    "foot",
-    "yard",
-    "mile"
+    "Inch",
+    "Foot",
+    "Yard",
+    "Mile"
   ];
   String? from;
 
@@ -36,10 +36,10 @@ class _LengthPageState extends State<LengthPage> {
     "Centimeter": 1,
     "Meter": 2,
     "Kilometer": 3,
-    "inch": 4,
-    "foot": 5,
-    "yard": 6,
-    "mile": 7,
+    "Inch": 4,
+    "Foot": 5,
+    "Yard": 6,
+    "Mile": 7,
   };
 
   dynamic formulas = {

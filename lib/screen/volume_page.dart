@@ -11,14 +11,14 @@ class VolumePage extends StatefulWidget {
 class _VolumePageState extends State<VolumePage> {
   List<String> volumeUnits = [
     "Milliliter",
-    "liter",
-    "cubic meter",
-    "cubic inch",
-    "cubic feet",
-    "pint",
-    "quart",
-    "gallon",
-    "barrel"
+    "Liter",
+    "Cubic meter",
+    "Cubic inch",
+    "Cubic feet",
+    "Pint",
+    "Quart",
+    "Gallon",
+    "Barrel"
   ];
   String? from;
 
@@ -34,14 +34,14 @@ class _VolumePageState extends State<VolumePage> {
 
   final Map<String, int> volumeUnitMap = {
     "Milliliter": 0,
-    "liter": 1,
-    "cubic meter": 2,
-    "cubic inch": 3,
-    "cubic feet": 4,
-    "pint": 5,
-    "quart": 6,
-    "gallon": 7,
-    "barrel": 8,
+    "Liter": 1,
+    "Cubic meter": 2,
+    "Cubic inch": 3,
+    "Cubic feet": 4,
+    "Pint": 5,
+    "Quart": 6,
+    "Gallon": 7,
+    "Barrel": 8,
   };
 
   dynamic formulas = {
