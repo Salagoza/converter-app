@@ -1,4 +1,4 @@
-import 'package:converter_app/components/favourite_task.dart';
+import 'package:converter_app/services/favourite_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sqflite/sqflite.dart';
