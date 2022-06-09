@@ -1,3 +1,4 @@
+import 'package:converter_app/screen/favourite_page.dart';
 import 'package:converter_app/screen/speed_page.dart';
 import 'package:converter_app/screen/temperature_page.dart';
 import 'package:converter_app/screen/volume_page.dart';
@@ -22,17 +23,31 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                SizedBox(
-                  height: 80.0,
-                  width: 400.0,
-                  child: Center(
-                    child: Text("Unit Converter",
-                        style: GoogleFonts.comfortaa(
-                          color: Colors.grey,
-                          fontSize: 32,
-                          fontWeight: FontWeight.w900,
-                        )),
-                  ),
+                Row(
+                  children: [
+                    SizedBox(
+                      height: 80.0,
+                      width: 220.0,
+                      child: Center(
+                        child: Text("Unit Converter",
+                            style: GoogleFonts.comfortaa(
+                              color: Colors.grey,
+                              fontSize: 32,
+                              fontWeight: FontWeight.w900,
+                            )),
+                      ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => const FavouritePage()));
+                        print("pressed");
+                      },
+                      style: OutlinedButton.styleFrom(
+                        backgroundColor: Colors.grey,
+                      ),
+                      child: Container(),
+                    )
+                  ],
                 ),
                 Row(
                   children: [
@@ -118,3 +133,5 @@ class HomePage extends StatelessWidget {
     );
   }
 }
+
+// add inverting , add dark theme, add ajarn recommended function

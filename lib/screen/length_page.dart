@@ -1,5 +1,9 @@
+import 'package:converter_app/components/favourite_task.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sqflite/sqflite.dart';
+
+import '../components/category_button_action.dart';
 
 class LengthPage extends StatefulWidget {
   const LengthPage({Key? key}) : super(key: key);
@@ -24,6 +28,7 @@ class _LengthPageState extends State<LengthPage> {
   String? to;
   double? userInput;
   String? resultMessage;
+
 
   @override
   void initState() {
@@ -69,7 +74,7 @@ class _LengthPageState extends State<LengthPage> {
       resultMessage = resultMessage;
     });
   }
-
+  final textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,6 +104,7 @@ class _LengthPageState extends State<LengthPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
+                        /// Value Text Field
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -138,6 +144,7 @@ class _LengthPageState extends State<LengthPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From dropdown
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -183,6 +190,8 @@ class _LengthPageState extends State<LengthPage> {
                             ),
                           ),
                         ),
+
+                        /// To dropdown
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -230,6 +239,7 @@ class _LengthPageState extends State<LengthPage> {
                           ),
                         ),
                         const SizedBox(height: 18.0),
+                        /// Convert Button
                         RawMaterialButton(
                             onPressed: () {
                               if (from == null ||
@@ -256,6 +266,39 @@ class _LengthPageState extends State<LengthPage> {
                                     color: Colors.white),
                               ),
                             )),
+                        const SizedBox(height: 18.0),
+                        /// Add to favourite button
+                        RawMaterialButton(
+                            onPressed: () async {
+                              if (from != null   &&  to != null ){
+                                //FavouriteTask(data: FavouriteData(from: from, fromValue: 10,to: to, toValue: 10 ));
+                                await DataBaseHelper.instance.add(
+                                  FavouriteData(fromUnit: from.toString(),fromValue: 10, toUnit: to.toString(),toValue: 10)
+                                );
+                                setState(() {
+                                  textController.clear();
+                                });
+                              }else{
+                                print("Can't Add");
+                              }
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.grey,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              alignment: AlignmentDirectional.center,
+                              width: 200,
+                              height: 70,
+                              child: Text(
+                                "Add To Favourite",
+                                style: GoogleFonts.comfortaa(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 20,
+                                    color: Colors.white),
+                              ),
+                            )),
+
                         const SizedBox(
                           height: 18.0,
                         ),
@@ -275,4 +318,5 @@ class _LengthPageState extends State<LengthPage> {
       ),
     );
   }
+
 }
