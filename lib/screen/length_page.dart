@@ -55,7 +55,6 @@ class _LengthPageState extends State<LengthPage> {
     "6": [914.4, 91.44, 0.9144, 0.0009144, 36, 3, 1, 0.0005682],
     "7": [1609344, 160934, 1609.3, 1.6093, 63360, 5280, 1760, 1]
   };
-
   void convert(double value, String from, String to) {
     int? nFrom = lengthUnitMap[from];
     int? nTo = lengthUnitMap[to];
@@ -270,7 +269,7 @@ class _LengthPageState extends State<LengthPage> {
                               if (from != null   &&  to != null ){
                                 //FavouriteTask(data: FavouriteData(from: from, fromValue: 10,to: to, toValue: 10 ));
                                 await DataBaseHelper.instance.add(
-                                  FavouriteData(fromUnit: from.toString(),fromValue: 10, toUnit: to.toString(),toValue: 10)
+                                  FavouriteData(fromUnit: from.toString(), toUnit: to.toString(),conversionRate: formulas[lengthUnitMap[from].toString()][lengthUnitMap[to]])
                                 );
                               }else{
                                 print("Can't Add");

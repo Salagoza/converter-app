@@ -6,31 +6,27 @@ import 'package:path_provider/path_provider.dart';
 class FavouriteData {
   final int? id;
   final String fromUnit;
-  final int fromValue;
   final String toUnit;
-  final int toValue;
+  final double conversionRate;
 
   FavouriteData(
       {  this.id,
         required this.fromUnit,
-        required this.fromValue,
         required this.toUnit,
-        required this.toValue});
+        required this.conversionRate});
 
   factory FavouriteData.fromMap(Map<String, dynamic> json) => FavouriteData(
       id: json["id"],
       fromUnit: json["fromUnit"],
-      fromValue: json["fromValue"],
       toUnit: json["toUnit"],
-      toValue: json["toValue"]);
+      conversionRate: json["conversionRate"]);
 
   Map<String, dynamic> toMap(){
     return {
       'id': id,
       'fromUnit': fromUnit,
-      'fromValue': fromValue,
       'toUnit': toUnit,
-      'toValue': toValue
+      'conversionRate': conversionRate
     };
   }
 }
@@ -57,9 +53,8 @@ class DataBaseHelper{
       CREATE TABLE favourites(
         id INTEGER PRIMARY KEY,
         fromUnit TEXT,
-        fromValue INTEGER,
         toUnit TEXT,
-        toValue INTEGER
+        conversionRate REAL
       )
     ''');
   }
