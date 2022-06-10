@@ -51,7 +51,7 @@ class HomePage extends StatelessWidget {
                         backgroundColor: Color(0xFFFFE082),
                       ),
                       child: const Icon(
-                        Icons.star_border_outlined, color: Colors.white, size: 30
+                        Icons.star, color: Colors.white, size: 30
                       ),
                     )
                   ],
