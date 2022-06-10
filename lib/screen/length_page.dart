@@ -1,9 +1,7 @@
 import 'package:converter_app/services/favourite_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sqflite/sqflite.dart';
 
-import '../components/category_button_action.dart';
 
 class LengthPage extends StatefulWidget {
   const LengthPage({Key? key}) : super(key: key);
@@ -74,7 +72,6 @@ class _LengthPageState extends State<LengthPage> {
       resultMessage = resultMessage;
     });
   }
-  final textController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -275,9 +272,6 @@ class _LengthPageState extends State<LengthPage> {
                                 await DataBaseHelper.instance.add(
                                   FavouriteData(fromUnit: from.toString(),fromValue: 10, toUnit: to.toString(),toValue: 10)
                                 );
-                                setState(() {
-                                  textController.clear();
-                                });
                               }else{
                                 print("Can't Add");
                               }
