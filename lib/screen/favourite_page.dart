@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sqflite/sqflite.dart';
 import '../services/favourite_service.dart';
 
 
@@ -13,11 +14,10 @@ class FavouritePage extends StatefulWidget {
 class _FavouritePageState extends State<FavouritePage> {
 
   double? userInput;
-
   String? resultMessage;
 
   void convert(double value, double conversionRate) {
-    var result = value * conversionRate;
+    var result = (value * conversionRate).toStringAsFixed(2);
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";
@@ -60,82 +60,115 @@ class _FavouritePageState extends State<FavouritePage> {
                     return ListView(
                       children: snapshot.data!.map((favourite) {
                         return Center(
-                          child: ExpansionTile(
-                            title: Text('${favourite.fromUnit} -> ${favourite.toUnit}',
-                              style: GoogleFonts.comfortaa(
-                                  color: Color(0xFF616161), fontSize: 18),
-                            ),
-                            children: [
-                              Column(
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SizedBox(
-                                          height: 50,
-                                          width: 280,
-                                          child: TextField(
-                                            onChanged: (text) {
-                                              var input = double.tryParse(text);
-                                              if (input != null) {
-                                                setState(() {
-                                                  resultMessage = text;
+                          child: Card(
+                            child: ExpansionTile(
+                              title: Text('${favourite.fromUnit} -> ${favourite.toUnit}',
+                                style: GoogleFonts.comfortaa(
+                                    color: Color(0xFF616161), fontSize: 18),
+                              ),
+                              children: [
+                                Column(
+                                    children: [
+                                      Row(
+                                        children: [
+                                          SizedBox(
+                                            height: 50,
+                                            width: 280,
+                                            child: TextField(
+                                              onChanged: (text) {
+                                                var input = double.tryParse(text);
+                                                if (input != null) {
+                                                  setState(() {
+                                                    userInput = input;
+                                                  }
+                                                  );
                                                 }
-                                                );
-                                              }
-                                            },
-                                            decoration: InputDecoration(
-                                              contentPadding: const EdgeInsets.all(10),
-                                              hintText: "Enter a value to convert",
-                                              hintStyle: GoogleFonts.comfortaa(
-                                                  color: Colors.grey, fontSize: 18),
-                                              border: const OutlineInputBorder(
-                                                  borderSide: BorderSide(
-                                                    style: BorderStyle.none,
-                                                    width: 0,
-                                                  )),
+                                              },
+                                              decoration: InputDecoration(
+                                                contentPadding: const EdgeInsets.all(10),
+                                                hintText: "Enter a value to convert",
+                                                hintStyle: GoogleFonts.comfortaa(
+                                                    color: Colors.grey, fontSize: 18),
+                                                border: const OutlineInputBorder(
+                                                    borderSide: BorderSide(
+                                                      style: BorderStyle.none,
+                                                      width: 0,
+                                                    )),
+                                              ),
+                                              keyboardType: TextInputType.number,
                                             ),
-                                            keyboardType: TextInputType.number,
                                           ),
-                                        ),
-                                        RawMaterialButton(
-                                            onPressed: () {
-                                              if (userInput == 0){
-                                                return;
-                                              }else{
-                                                convert(userInput!, favourite.conversionRate);
-                                                //print("converted");
-                                              }
-                                            },
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.grey,
-                                                borderRadius: BorderRadius.circular(20),
-                                              ),
-                                              alignment: AlignmentDirectional.center,
-                                              width: 100,
-                                              height: 30,
-                                              child: Text(
-                                                "Convert",
-                                                style: GoogleFonts.comfortaa(
-                                                    fontWeight: FontWeight.w900,
-                                                    fontSize: 14,
-                                                    color: Colors.white),
-                                              ),
-                                            )),
-                                      ],
-                                    ),
-                                    Text(
-                                      (resultMessage.toString() == "null")
-                                          ? ""
-                                          : resultMessage.toString(),
-                                      style: GoogleFonts.comfortaa(
-                                          fontSize: 20, fontWeight: FontWeight.w900),
-                                    )
+                                          Column(
+                                            children: <Widget>[
+                                              RawMaterialButton(
+                                                onPressed: () {
+                                                  if (userInput == 0){
+                                                    return;
+                                                  }else{
+                                                    convert(userInput!, favourite.conversionRate);
+                                                    //print("converted");
+                                                  }
+                                                },
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.grey,
+                                                    borderRadius: BorderRadius.circular(20),
+                                                  ),
+                                                  alignment: AlignmentDirectional.center,
+                                                  width: 100,
+                                                  height: 30,
+                                                  child: Text(
+                                                    "Convert",
+                                                    style: GoogleFonts.comfortaa(
+                                                        fontWeight: FontWeight.w900,
+                                                        fontSize: 14,
+                                                        color: Colors.white),
+                                                  ),
 
-                                  ]
-                              )
-                            ],
-                          ),
+                                                ),),
+                                              RawMaterialButton(
+                                                onPressed: (){
+                                                  setState(() {
+                                                    DataBaseHelper.instance.remove(favourite.id!);
+                                                  });
+
+                                                }
+                                                  ,
+                                                child: Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.redAccent,
+                                                    borderRadius: BorderRadius.circular(20),
+                                                  ),
+                                                  alignment: AlignmentDirectional.center,
+                                                  width: 100,
+                                                  height: 30,
+                                                  child: Text(
+                                                    "Delete",
+                                                    style: GoogleFonts.comfortaa(
+                                                        fontWeight: FontWeight.w900,
+                                                        fontSize: 14,
+                                                        color: Colors.white),
+                                                  ),
+
+                                                ),)
+                                            ],
+                                          )
+
+                                        ],
+                                      ),
+                                      Text(
+                                        (resultMessage.toString() == "null")
+                                            ? ""
+                                            : resultMessage.toString(),
+                                        style: GoogleFonts.comfortaa(
+                                            fontSize: 20, fontWeight: FontWeight.w900),
+                                      )
+
+                                    ]
+                                )
+                              ],
+                            ),
+                          )
                         );
                       }).toList(),
                     );

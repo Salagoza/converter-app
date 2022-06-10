@@ -59,7 +59,7 @@ class _LengthPageState extends State<LengthPage> {
     int? nFrom = lengthUnitMap[from];
     int? nTo = lengthUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
-    var result = value * multi;
+    var result = (value * multi).toStringAsFixed(2);
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";

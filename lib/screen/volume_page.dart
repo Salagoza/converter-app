@@ -45,8 +45,7 @@ class _VolumePageState extends State<VolumePage> {
   };
 
   dynamic formulas = {
-    "0": [
-      1,
+    "0": [1,
       0.001,
       0.000001,
       0.061023744094732,
@@ -150,7 +149,7 @@ class _VolumePageState extends State<VolumePage> {
     int? nFrom = volumeUnitMap[from];
     int? nTo = volumeUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
-    var result = value * multi;
+    var result = (value * multi).toStringAsFixed(2);
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";

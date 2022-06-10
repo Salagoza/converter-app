@@ -51,7 +51,7 @@ class _SpeedPageState extends State<SpeedPage> {
     int? nFrom = speedUnitMap[from];
     int? nTo = speedUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
-    var result = value * multi;
+    var result = (value * multi).toStringAsFixed(2);
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";

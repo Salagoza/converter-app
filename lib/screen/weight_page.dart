@@ -48,7 +48,7 @@ class _WeightPageState extends State<WeightPage> {
     int? nFrom = weightUnitMap[from];
     int? nTo = weightUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
-    var result = value * multi;
+    var result = (value * multi).toStringAsFixed(2);
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";

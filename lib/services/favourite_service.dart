@@ -73,6 +73,7 @@ class DataBaseHelper{
 
   Future<int> remove(int id) async{
     Database db = await instance.database;
+    print("deleting");
     return await db.delete('favourites', where: 'id = ?', whereArgs: [id]);
   }
 
