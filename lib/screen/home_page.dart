@@ -23,10 +23,12 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+
                 Row(
-                  children: [
-                    SizedBox(
-                      height: 80.0,
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.all(12),
+                      height: 100.0,
                       width: 220.0,
                       child: Center(
                         child: Text("Unit Converter",
@@ -37,15 +39,20 @@ class HomePage extends StatelessWidget {
                             )),
                       ),
                     ),
+                    const SizedBox(
+                      width: 75,
+                    ),
                     TextButton(
                       onPressed: () {
                         Navigator.push(context, MaterialPageRoute(builder: (context) => const FavouritePage()));
-                        print("pressed");
+                        //print("pressed");
                       },
                       style: OutlinedButton.styleFrom(
-                        backgroundColor: Colors.grey,
+                        backgroundColor: Color(0xFFFFE082),
                       ),
-                      child: Container(),
+                      child: const Icon(
+                        Icons.star_border_outlined, color: Colors.white, size: 30
+                      ),
                     )
                   ],
                 ),
