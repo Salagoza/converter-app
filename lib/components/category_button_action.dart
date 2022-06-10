@@ -40,21 +40,20 @@ class CategoryButton extends StatelessWidget {
             backgroundColor: action.color,
             padding: const EdgeInsets.all(20.0),
           ),
-          child: Container(
-              child: Stack(
+          child: Stack(
             children: <Widget>[
-              Align(
-                  alignment: Alignment.center,
-                  child: Icon(action.iconData,
-                      color: action.iconColor, size: 100)),
-              Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Text(action.label,
-                      style: GoogleFonts.comfortaa(
-                          color: action.labelColor,
-                          fontWeight: FontWeight.bold)))
+          Align(
+              alignment: Alignment.center,
+              child: Icon(action.iconData,
+                  color: action.iconColor, size: 100)),
+          Align(
+              alignment: Alignment.bottomCenter,
+              child: Text(action.label,
+                  style: GoogleFonts.comfortaa(
+                      color: action.labelColor,
+                      fontWeight: FontWeight.bold)))
             ],
-          ))),
+          )),
     ));
   }
 }
