@@ -34,26 +34,28 @@ class CategoryButton extends StatelessWidget {
         child: Container(
       padding: const EdgeInsets.all(10),
       height: 200,
-      child: TextButton(
-          onPressed: () => action.callback.call(context),
-          style: OutlinedButton.styleFrom(
-            backgroundColor: action.color,
-            padding: const EdgeInsets.all(20.0),
-          ),
-          child: Stack(
-            children: <Widget>[
-          Align(
-              alignment: Alignment.center,
-              child: Icon(action.iconData,
-                  color: action.iconColor, size: 100)),
-          Align(
-              alignment: Alignment.bottomCenter,
-              child: Text(action.label,
-                  style: GoogleFonts.comfortaa(
-                      color: action.labelColor,
-                      fontWeight: FontWeight.bold)))
-            ],
-          )),
+      child: Container(
+        child: TextButton(
+            onPressed: () => action.callback.call(context),
+            style: OutlinedButton.styleFrom(
+              backgroundColor: action.color,
+              padding: const EdgeInsets.all(20.0),
+            ),
+            child: Stack(
+              children: <Widget>[
+            Align(
+                alignment: Alignment.center,
+                child: Icon(action.iconData,
+                    color: action.iconColor, size: 100)),
+            Align(
+                alignment: Alignment.bottomCenter,
+                child: Text(action.label,
+                    style: GoogleFonts.comfortaa(
+                        color: action.labelColor,
+                        fontWeight: FontWeight.bold)))
+              ],
+            )),
+      ),
     ));
   }
 }

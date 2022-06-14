@@ -8,7 +8,6 @@ class FavouriteData {
   final String fromUnit;
   final String toUnit;
   final double conversionRate;
-
   FavouriteData(
       {  this.id,
         required this.fromUnit,
@@ -19,7 +18,8 @@ class FavouriteData {
       id: json["id"],
       fromUnit: json["fromUnit"],
       toUnit: json["toUnit"],
-      conversionRate: json["conversionRate"]);
+      conversionRate: json["conversionRate"],
+     );
 
   Map<String, dynamic> toMap(){
     return {
@@ -73,7 +73,7 @@ class DataBaseHelper{
 
   Future<int> remove(int id) async{
     Database db = await instance.database;
-    print("deleting");
+    //print("deleting");
     return await db.delete('favourites', where: 'id = ?', whereArgs: [id]);
   }
 
