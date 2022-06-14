@@ -124,7 +124,12 @@ class _FavouritePageState extends State<FavouritePage> {
                                                     color: Colors.white),
                                               ),
                                               style: ButtonStyle(
-                                                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey)
+
+                                                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
+                                                shape:  MaterialStateProperty.all<RoundedRectangleBorder>(
+                                                    RoundedRectangleBorder(
+                                                        borderRadius: BorderRadius.circular(20),
+                                                    ))
                                               ),
                                             ),
                                           RawMaterialButton(
@@ -142,8 +147,8 @@ class _FavouritePageState extends State<FavouritePage> {
                                               ),
                                               alignment:
                                                   AlignmentDirectional.center,
-                                              width: 100,
-                                              height: 30,
+                                              width: 90,
+                                              height: 35,
                                               child: Text(
                                                 "Delete",
                                                 style: GoogleFonts.comfortaa(
