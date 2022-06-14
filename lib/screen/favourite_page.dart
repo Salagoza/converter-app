@@ -13,19 +13,6 @@ class _FavouritePageState extends State<FavouritePage> {
   double? userInput;
   String? resultMessage;
 
-  void convert(double value, double conversionRate) {
-    var result = (value * conversionRate).toStringAsFixed(2);
-
-    if (result == 0) {
-      resultMessage = "Can't Perform the conversion";
-    } else {
-      resultMessage = "${result.toString()} ";
-    }
-    setState(() {
-      resultMessage = resultMessage;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
