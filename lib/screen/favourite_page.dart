@@ -88,20 +88,57 @@ class _FavouritePageState extends State<FavouritePage> {
                                         children: <Widget>[
                                           ElevatedButton(
                                             onPressed: () {
-                                              showDialog(
-                                                  context: context,
-                                                  builder: (context) =>
-                                                      AlertDialog(
-                                                        content: Text(userInput != null ? "${(userInput! * favourite.conversionRate).toStringAsFixed(2)} ${favourite.toUnit}" : "Input a number"),
-                                                        actions: [TextButton(child: Text("Done"), onPressed: () => Navigator.pop(context),)],
-                                                        shape: RoundedRectangleBorder(
-                                                          borderRadius: BorderRadius.circular(30),
-                                                        ),
-                                                        contentTextStyle: GoogleFonts.comfortaa(
-                                                          color: Colors.grey,
-                                                          fontSize: 32,
-                                                        ),
-                                                      ));
+                                              if (favourite.fromUnit == "Degree Celsius" || favourite.fromUnit == "Degree Fahrenheit"){
+                                                if (favourite.fromUnit == "Degree Celsius"){
+                                                  String result = (userInput! * favourite.conversionRate + 32).toString();
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                          AlertDialog(
+                                                            content: Text("$result ${favourite.toUnit}"),
+                                                            actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                                            shape: RoundedRectangleBorder(
+                                                              borderRadius: BorderRadius.circular(30),
+                                                            ),
+                                                            contentTextStyle: GoogleFonts.comfortaa(
+                                                              color: Colors.grey,
+                                                              fontSize: 32,
+                                                            ),
+                                                          ));
+                                                }else{
+                                                  String result = ((userInput! + favourite.conversionRate) * 0.5556).toString();
+                                                  showDialog(
+                                                      context: context,
+                                                      builder: (context) =>
+                                                  AlertDialog(
+                                                    content: Text("$result ${favourite.toUnit}"),
+                                                    actions: [TextButton(child: const Text("Done"),
+                                                      onPressed: () => Navigator.pop(context),)],
+                                                    shape: RoundedRectangleBorder(
+                                                      borderRadius: BorderRadius.circular(30),
+                                                    ),
+                                                    contentTextStyle: GoogleFonts.comfortaa(
+                                                      color: Colors.grey,
+                                                      fontSize: 32
+                                                    ),
+                                                  ));
+                                                }
+                                              }else{
+                                                showDialog(
+                                                    context: context,
+                                                    builder: (context) =>
+                                                        AlertDialog(
+                                                          content: Text(userInput != null ? "${(userInput! * favourite.conversionRate).toStringAsFixed(2)} ${favourite.toUnit}": "Input a number to convert"),
+                                                          actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                                          shape: RoundedRectangleBorder(
+                                                            borderRadius: BorderRadius.circular(30),
+                                                          ),
+                                                          contentTextStyle: GoogleFonts.comfortaa(
+                                                            color: Colors.grey,
+                                                            fontSize: 32,
+                                                          ),
+                                                        ));
+                                              }
                                             },
                                               child: Text(
                                                 "Convert",

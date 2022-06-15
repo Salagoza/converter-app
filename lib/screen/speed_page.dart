@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../services/favourite_service.dart';
+
 class SpeedPage extends StatefulWidget {
   const SpeedPage({Key? key}) : super(key: key);
 
@@ -226,36 +228,65 @@ class _SpeedPageState extends State<SpeedPage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 18.0),
-                        RawMaterialButton(
-                            onPressed: () {
-                              if (from == null ||
-                                  to == null ||
-                                  userInput == 0) {
-                                return;
-                              } else {
-                                convert(userInput!, from!, to!);
+                      const SizedBox(height: 30.0),
+                      Row(
+                        children: <Widget>[
+                          const SizedBox(width: 45),
+                          /// Convert Button
+                          RawMaterialButton(
+                              onPressed: () {
+                                if (from == null ||
+                                    to == null ||
+                                    userInput == 0) {
+                                  return;
+                                } else {
+                                  convert(userInput!, from!, to!);
+                                }
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Colors.grey,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                alignment: AlignmentDirectional.center,
+                                width: 200,
+                                height: 70,
+                                child: Text(
+                                  "Convert",
+                                  style: GoogleFonts.comfortaa(
+                                      fontWeight: FontWeight.w900,
+                                      fontSize: 32,
+                                      color: Colors.white),
+                                ),
+                              )),
+                          RawMaterialButton(
+                            onPressed: () async {
+                              if (from != null   &&  to != null ){
+                                await DataBaseHelper.instance.add(
+                                    FavouriteData(fromUnit: from.toString(), toUnit: to.toString(),conversionRate: formulas[speedUnitMap[from].toString()][speedUnitMap[to]])
+                                );
+                              }else{
+                                print("Can't Add");
                               }
                             },
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.grey,
+                                color: Color(0xFFFFE082),
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               alignment: AlignmentDirectional.center,
-                              width: 200,
+                              width: 80,
                               height: 70,
-                              child: Text(
-                                "Convert",
-                                style: GoogleFonts.comfortaa(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 32,
-                                    color: Colors.white),
-                              ),
-                            )),
-                        const SizedBox(
-                          height: 18.0,
-                        ),
+                              child: const Icon(
+                                  Icons.star,
+                                  color: Colors.white, size: 30),
+                            ),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
                         Text(
                           (resultMessage.toString() == "null")
                               ? ""

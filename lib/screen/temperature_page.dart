@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../services/favourite_service.dart';
+
 class TemperaturePage extends StatefulWidget {
   const TemperaturePage({Key? key}) : super(key: key);
 
@@ -25,6 +27,11 @@ class _TemperaturePageState extends State<TemperaturePage> {
   final Map<String, int> temperatureUnitMap = {
     "Degree Celsius": 0,
     "Degree Fahrenheit": 1,
+  };
+
+  dynamic formulas = {
+    "0": [1.0, 1.8],
+    "1": [32, 1.0],
   };
 
   void convert(double value, String from, String to) {
@@ -212,36 +219,67 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 18.0),
-                        RawMaterialButton(
-                            onPressed: () {
-                              if (from == null ||
-                                  to == null ||
-                                  userInput == 0) {
-                                return;
-                              } else {
-                                convert(userInput!, from!, to!);
-                              }
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.grey,
-                                borderRadius: BorderRadius.circular(20),
+                        const SizedBox(height: 30.0),
+
+
+                        Row(
+                          children: <Widget>[
+                            const SizedBox(width: 45),
+                            /// Convert Button
+                            RawMaterialButton(
+                                onPressed: () {
+                                  if (from == null ||
+                                      to == null ||
+                                      userInput == 0) {
+                                    return;
+                                  } else {
+                                    convert(userInput!, from!, to!);
+                                  }
+                                },
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.grey,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  alignment: AlignmentDirectional.center,
+                                  width: 200,
+                                  height: 70,
+                                  child: Text(
+                                    "Convert",
+                                    style: GoogleFonts.comfortaa(
+                                        fontWeight: FontWeight.w900,
+                                        fontSize: 32,
+                                        color: Colors.white),
+                                  ),
+                                )),
+                            RawMaterialButton(
+                              onPressed: () async {
+                                if (from != null   &&  to != null ){
+                                  //FavouriteTask(data: FavouriteData(from: from, fromValue: 10,to: to, toValue: 10 ));
+                                  await DataBaseHelper.instance.add(
+                                      FavouriteData(fromUnit: from.toString(), toUnit: to.toString(),conversionRate: formulas[temperatureUnitMap[from].toString()][temperatureUnitMap[to]])
+                                  );
+                                }else{
+                                  print("Can't Add");
+                                }
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFFFE082),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                alignment: AlignmentDirectional.center,
+                                width: 80,
+                                height: 70,
+                                child: const Icon(
+                                    Icons.star,
+                                    color: Colors.white, size: 30),
                               ),
-                              alignment: AlignmentDirectional.center,
-                              width: 200,
-                              height: 70,
-                              child: Text(
-                                "Convert",
-                                style: GoogleFonts.comfortaa(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 32,
-                                    color: Colors.white),
-                              ),
-                            )),
-                        const SizedBox(
-                          height: 18.0,
+                            ),
+                          ],
                         ),
+                        const SizedBox(height: 30.0),
+                        /// Add to favourite button
                         Text(
                           (resultMessage.toString() == "null")
                               ? ""
