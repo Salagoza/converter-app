@@ -90,7 +90,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                             onPressed: () {
                                               if (favourite.fromUnit == "Degree Celsius" || favourite.fromUnit == "Degree Fahrenheit"){
                                                 if (favourite.fromUnit == "Degree Celsius"){
-                                                  String result = (userInput! * favourite.conversionRate + 32).toString();
+                                                  String result = (userInput! * favourite.conversionRate + 32).toStringAsFixed(2);
                                                   showDialog(
                                                       context: context,
                                                       builder: (context) =>
@@ -106,7 +106,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                                             ),
                                                           ));
                                                 }else{
-                                                  String result = ((userInput! + favourite.conversionRate) * 0.5556).toString();
+                                                  String result = ((userInput! + favourite.conversionRate) * 0.5556).toStringAsFixed(2);
                                                   showDialog(
                                                       context: context,
                                                       builder: (context) =>

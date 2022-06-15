@@ -31,7 +31,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
 
   dynamic formulas = {
     "0": [1.0, 1.8],
-    "1": [32, 1.0],
+    "1": [32.0, 1.0],
   };
 
   void convert(double value, String from, String to) {
