@@ -14,6 +14,12 @@ class _FavouritePageState extends State<FavouritePage> {
   String? resultMessage;
 
   @override
+  void initState() {
+    userInput = 0;
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
@@ -86,7 +92,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                       ),
                                       Column(
                                         children: <Widget>[
-                                          ElevatedButton(
+                                          RawMaterialButton(
                                             onPressed: () {
                                               if (favourite.fromUnit == "Degree Celsius" || favourite.fromUnit == "Degree Fahrenheit"){
                                                 if (favourite.fromUnit == "Degree Celsius"){
@@ -104,7 +110,8 @@ class _FavouritePageState extends State<FavouritePage> {
                                                               color: Colors.grey,
                                                               fontSize: 32,
                                                             ),
-                                                          ));
+                                                          )
+                                                  );
                                                 }else{
                                                   String result = ((userInput! + favourite.conversionRate) * 0.5556).toStringAsFixed(2);
                                                   showDialog(
@@ -128,7 +135,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                                     context: context,
                                                     builder: (context) =>
                                                         AlertDialog(
-                                                          content: Text(userInput != null ? "${(userInput! * favourite.conversionRate).toStringAsFixed(2)} ${favourite.toUnit}": "Input a number to convert"),
+                                                          content: Text(userInput == 0 ? "Input a number to convert" : "${(userInput! * favourite.conversionRate).toStringAsFixed(2)} ${favourite.toUnit}"),
                                                           actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
                                                           shape: RoundedRectangleBorder(
                                                             borderRadius: BorderRadius.circular(30),
@@ -140,6 +147,16 @@ class _FavouritePageState extends State<FavouritePage> {
                                                         ));
                                               }
                                             },
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.grey,
+                                                borderRadius:
+                                                BorderRadius.circular(20),
+                                              ),
+                                              alignment:
+                                              AlignmentDirectional.center,
+                                              width: 90,
+                                              height: 35,
                                               child: Text(
                                                 "Convert",
                                                 style: GoogleFonts.comfortaa(
@@ -147,14 +164,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                                     fontSize: 14,
                                                     color: Colors.white),
                                               ),
-                                              style: ButtonStyle(
-
-                                                backgroundColor: MaterialStateProperty.all<Color>(Colors.grey),
-                                                shape:  MaterialStateProperty.all<RoundedRectangleBorder>(
-                                                    RoundedRectangleBorder(
-                                                        borderRadius: BorderRadius.circular(20),
-                                                    ))
-                                              ),
+                                            ),
                                             ),
                                           RawMaterialButton(
                                             onPressed: () {

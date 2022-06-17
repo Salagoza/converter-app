@@ -234,6 +234,21 @@ class _TemperaturePageState extends State<TemperaturePage> {
                                     return;
                                   } else {
                                     convert(userInput!, from!, to!);
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            AlertDialog(
+                                              content: Text("$resultMessage"),
+                                              actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30),
+                                              ),
+                                              contentTextStyle: GoogleFonts.comfortaa(
+                                                color: Colors.grey,
+                                                fontSize: 32,
+                                              ),
+                                            )
+                                    );
                                   }
                                 },
                                 child: Container(
@@ -278,15 +293,9 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             ),
                           ],
                         ),
-                        const SizedBox(height: 30.0),
+                        const SizedBox(height: 50.0),
                         /// Add to favourite button
-                        Text(
-                          (resultMessage.toString() == "null")
-                              ? ""
-                              : resultMessage.toString(),
-                          style: const TextStyle(
-                              fontSize: 30, fontWeight: FontWeight.w900),
-                        )
+
                       ],
                     ),
                   ),

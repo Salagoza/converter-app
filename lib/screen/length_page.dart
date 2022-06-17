@@ -21,8 +21,8 @@ class _LengthPageState extends State<LengthPage> {
     "Yard",
     "Mile"
   ];
-  String? from;
 
+  String? from;
   String? to;
   double? userInput;
   String? resultMessage;
@@ -59,7 +59,7 @@ class _LengthPageState extends State<LengthPage> {
     int? nFrom = lengthUnitMap[from];
     int? nTo = lengthUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
-    var result = (value * multi).toStringAsFixed(2);
+    var result = value * multi;
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";
@@ -249,6 +249,21 @@ class _LengthPageState extends State<LengthPage> {
                                     return;
                                   } else {
                                     convert(userInput!, from!, to!);
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            AlertDialog(
+                                              content: Text("$resultMessage"),
+                                              actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30),
+                                              ),
+                                              contentTextStyle: GoogleFonts.comfortaa(
+                                                color: Colors.grey,
+                                                fontSize: 32,
+                                              ),
+                                            )
+                                    );
                                   }
                                 },
                                 child: Container(
@@ -293,16 +308,9 @@ class _LengthPageState extends State<LengthPage> {
                                 ),
                           ],
                         ),
-                        const SizedBox(height: 30.0)
+                        const SizedBox(height: 50.0)
                         /// Add to favourite button
                         ,
-                        Text(
-                          (resultMessage.toString() == "null")
-                              ? ""
-                              : resultMessage.toString(),
-                          style: GoogleFonts.comfortaa(
-                              fontSize: 30, fontWeight: FontWeight.w900),
-                        )
                       ],
                     ),
                   ),
@@ -312,5 +320,4 @@ class _LengthPageState extends State<LengthPage> {
       ),
     );
   }
-
 }

@@ -53,7 +53,7 @@ class _AreaPageState extends State<AreaPage> {
     int? nFrom = areaUnitMap[from];
     int? nTo = areaUnitMap[to];
     var multi = formulas[nFrom.toString()][nTo];
-    var result = (value * multi).toStringAsFixed(2);
+    var result = value * multi;
 
     if (result == 0) {
       resultMessage = "Can't Perform the conversion";
@@ -237,32 +237,47 @@ class _AreaPageState extends State<AreaPage> {
                           children: <Widget>[
                             const SizedBox(width: 45),
                             /// Convert Button
-                            RawMaterialButton(
-                                onPressed: () {
-                                  if (from == null ||
-                                      to == null ||
-                                      userInput == 0) {
-                                    return;
-                                  } else {
-                                    convert(userInput!, from!, to!);
-                                  }
-                                },
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey,
-                                    borderRadius: BorderRadius.circular(20),
-                                  ),
-                                  alignment: AlignmentDirectional.center,
-                                  width: 200,
-                                  height: 70,
-                                  child: Text(
-                                    "Convert",
-                                    style: GoogleFonts.comfortaa(
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 32,
-                                        color: Colors.white),
-                                  ),
-                                )),
+                      RawMaterialButton(
+                          onPressed: () {
+                            if (from == null ||
+                                to == null ||
+                                userInput == 0) {
+                              return;
+                            } else {
+                              convert(userInput!, from!, to!);
+                              showDialog(
+                                  context: context,
+                                  builder: (context) =>
+                                      AlertDialog(
+                                        content: Text("$resultMessage"),
+                                        actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(30),
+                                        ),
+                                        contentTextStyle: GoogleFonts.comfortaa(
+                                          color: Colors.grey,
+                                          fontSize: 32,
+                                        ),
+                                      )
+                              );
+                            }
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            alignment: AlignmentDirectional.center,
+                            width: 200,
+                            height: 70,
+                            child: Text(
+                              "Convert",
+                              style: GoogleFonts.comfortaa(
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 32,
+                                  color: Colors.white),
+                            ),
+                          )),
                             RawMaterialButton(
                               onPressed: () async {
                                 if (from != null   &&  to != null ){
@@ -289,17 +304,8 @@ class _AreaPageState extends State<AreaPage> {
                           ],
                         ),
                         const SizedBox(
-                          height: 30.0,
+                          height: 50.0,
                         ),
-                        Text(
-                          (resultMessage.toString() == "null")
-                              ? ""
-                              : resultMessage.toString(),
-                          style: GoogleFonts.comfortaa(
-                            fontSize: 30,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        )
                       ],
                     ),
                   ),
