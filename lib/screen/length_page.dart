@@ -100,7 +100,6 @@ class _LengthPageState extends State<LengthPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        /// Value Text Field
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -140,7 +139,6 @@ class _LengthPageState extends State<LengthPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
-                        /// From dropdown
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -186,8 +184,6 @@ class _LengthPageState extends State<LengthPage> {
                             ),
                           ),
                         ),
-
-                        /// To dropdown
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -236,16 +232,29 @@ class _LengthPageState extends State<LengthPage> {
                         ),
                         const SizedBox(height: 30.0),
 
-
                         Row(
                           children: <Widget>[
                             const SizedBox(width: 45),
-                            /// Convert Button
                             RawMaterialButton(
                                 onPressed: () {
                                   if (from == null ||
                                       to == null ||
                                       userInput == 0) {
+                                    showDialog(
+                                        context: context,
+                                        builder: (context) =>
+                                            AlertDialog(
+                                              content: const Text("Fill up all the fields to convert"),
+                                              actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(30),
+                                              ),
+                                              contentTextStyle: GoogleFonts.comfortaa(
+                                                color: Colors.redAccent,
+                                                fontSize: 25,
+                                              ),
+                                            )
+                                    );
                                     return;
                                   } else {
                                     convert(userInput!, from!, to!);
@@ -289,8 +298,6 @@ class _LengthPageState extends State<LengthPage> {
                                     await DataBaseHelper.instance.add(
                                         FavouriteData(fromUnit: from.toString(), toUnit: to.toString(),conversionRate: formulas[lengthUnitMap[from].toString()][lengthUnitMap[to]])
                                     );
-                                  }else{
-                                    print("Can't Add");
                                   }
                                 },
                                 child: Container(
@@ -309,7 +316,6 @@ class _LengthPageState extends State<LengthPage> {
                           ],
                         ),
                         const SizedBox(height: 50.0)
-                        /// Add to favourite button
                         ,
                       ],
                     ),

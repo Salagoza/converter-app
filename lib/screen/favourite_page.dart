@@ -135,7 +135,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                                     context: context,
                                                     builder: (context) =>
                                                         AlertDialog(
-                                                          content: Text(userInput == 0 ? "Input a number to convert" : "${(userInput! * favourite.conversionRate).toStringAsFixed(2)} ${favourite.toUnit}"),
+                                                          content: Text(userInput == 0 ? "Input a number to convert" : "${(userInput! * favourite.conversionRate)} ${favourite.toUnit}"),
                                                           actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
                                                           shape: RoundedRectangleBorder(
                                                             borderRadius: BorderRadius.circular(30),

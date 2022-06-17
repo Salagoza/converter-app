@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../services/favourite_service.dart';
 
 class SpeedPage extends StatefulWidget {
@@ -232,12 +231,26 @@ class _SpeedPageState extends State<SpeedPage> {
                       Row(
                         children: <Widget>[
                           const SizedBox(width: 45),
-                          /// Convert Button
                       RawMaterialButton(
                           onPressed: () {
                             if (from == null ||
                                 to == null ||
                                 userInput == 0) {
+                              showDialog(
+                                  context: context,
+                                  builder: (context) =>
+                                      AlertDialog(
+                                        content: const Text("Fill up all the fields to convert"),
+                                        actions: [TextButton(child: const Text("Done"), onPressed: () => Navigator.pop(context),)],
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(30),
+                                        ),
+                                        contentTextStyle: GoogleFonts.comfortaa(
+                                          color: Colors.redAccent,
+                                          fontSize: 25,
+                                        ),
+                                      )
+                              );
                               return;
                             } else {
                               convert(userInput!, from!, to!);
@@ -280,8 +293,6 @@ class _SpeedPageState extends State<SpeedPage> {
                                 await DataBaseHelper.instance.add(
                                     FavouriteData(fromUnit: from.toString(), toUnit: to.toString(),conversionRate: formulas[speedUnitMap[from].toString()][speedUnitMap[to]])
                                 );
-                              }else{
-                                print("Can't Add");
                               }
                             },
                             child: Container(
