@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/favourite_service.dart';
 
+/// Volume conversion page
 class VolumePage extends StatefulWidget {
   const VolumePage({Key? key}) : super(key: key);
 
@@ -10,6 +11,7 @@ class VolumePage extends StatefulWidget {
 }
 
 class _VolumePageState extends State<VolumePage> {
+  /// List of units for volume category
   List<String> volumeUnits = [
     "Milliliter",
     "Liter",
@@ -32,7 +34,7 @@ class _VolumePageState extends State<VolumePage> {
     userInput = 0;
     super.initState();
   }
-
+  /// Map to map the unit
   final Map<String, int> volumeUnitMap = {
     "Milliliter": 0,
     "Liter": 1,
@@ -44,7 +46,7 @@ class _VolumePageState extends State<VolumePage> {
     "Gallon": 7,
     "Barrel": 8,
   };
-
+  /// Map to look up the conversion rate for each unit
   dynamic formulas = {
     "0": [1,
       0.001,
@@ -145,7 +147,7 @@ class _VolumePageState extends State<VolumePage> {
       1
     ]
   };
-
+  /// Convert function to perform the conversion
   void convert(double value, String from, String to) {
     int? nFrom = volumeUnitMap[from];
     int? nTo = volumeUnitMap[to];
@@ -174,6 +176,7 @@ class _VolumePageState extends State<VolumePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Title
                 SizedBox(
                   height: 80.0,
                   width: 400.0,
@@ -186,6 +189,7 @@ class _VolumePageState extends State<VolumePage> {
                         )),
                   ),
                 ),
+                /// User's input field
                 Expanded(
                   child: Center(
                     child: Column(
@@ -234,6 +238,7 @@ class _VolumePageState extends State<VolumePage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -281,6 +286,7 @@ class _VolumePageState extends State<VolumePage> {
                             ),
                           ),
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -329,6 +335,7 @@ class _VolumePageState extends State<VolumePage> {
                         ),
                       const SizedBox(height: 30.0),
                       Row(
+                        /// Convert button & AlertDialog to Display Result
                         children: <Widget>[
                           const SizedBox(width: 45),
                       RawMaterialButton(
@@ -387,6 +394,7 @@ class _VolumePageState extends State<VolumePage> {
                                   color: Colors.white),
                             ),
                           )),
+                          /// Add to favourite button to save user's favourite conversation
                           RawMaterialButton(
                             onPressed: () async {
                               if (from != null   &&  to != null ){

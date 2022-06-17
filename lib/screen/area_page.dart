@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/favourite_service.dart';
 
+/// Area conversion page
 class AreaPage extends StatefulWidget {
   const AreaPage({Key? key}) : super(key: key);
 
@@ -10,6 +11,7 @@ class AreaPage extends StatefulWidget {
 }
 
 class _AreaPageState extends State<AreaPage> {
+  /// List of units for area category
   List<String> areaUnits = [
     "Millimeter Square",
     "Centimeter Square",
@@ -30,6 +32,7 @@ class _AreaPageState extends State<AreaPage> {
     super.initState();
   }
 
+  /// Map to map the unit
   final Map<String, int> areaUnitMap = {
     "Millimeter Square": 0,
     "Centimeter Square": 1,
@@ -38,7 +41,7 @@ class _AreaPageState extends State<AreaPage> {
     "Foot Square": 4,
     "Yard Square": 5,
   };
-
+  /// Map to look up the conversion rate for each unit
   dynamic formulas = {
     "0": [1, 0.01, 0.00001, 0.00155, 0.000011, 0.000001],
     "1": [100, 1, 0.0001, 0.155, 0.001076, 0.00012],
@@ -48,6 +51,7 @@ class _AreaPageState extends State<AreaPage> {
     "5": [836127, 8361.274, 0.836127, 1296, 9, 1],
   };
 
+  /// Convert function to perform the conversion
   void convert(double value, String from, String to) {
     int? nFrom = areaUnitMap[from];
     int? nTo = areaUnitMap[to];
@@ -76,6 +80,7 @@ class _AreaPageState extends State<AreaPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Title
                 SizedBox(
                   height: 80.0,
                   width: 400.0,
@@ -88,6 +93,7 @@ class _AreaPageState extends State<AreaPage> {
                         )),
                   ),
                 ),
+                /// User's input field
                 Expanded(
                   child: Center(
                     child: Column(
@@ -136,6 +142,7 @@ class _AreaPageState extends State<AreaPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -183,6 +190,7 @@ class _AreaPageState extends State<AreaPage> {
                             ),
                           ),
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -233,6 +241,7 @@ class _AreaPageState extends State<AreaPage> {
                         ),
                         const SizedBox(height: 30.0),
                         Row(
+                          /// Convert button & AlertDialog to Display Result
                           children: <Widget>[
                             const SizedBox(width: 45),
                       RawMaterialButton(
@@ -291,6 +300,7 @@ class _AreaPageState extends State<AreaPage> {
                                   color: Colors.white),
                             ),
                           )),
+                            /// Add to favourite button to save user's favourite conversation
                             RawMaterialButton(
                               onPressed: () async {
                                 if (from != null   &&  to != null ){

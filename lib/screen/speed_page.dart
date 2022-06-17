@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/favourite_service.dart';
 
+/// Speed conversion page
 class SpeedPage extends StatefulWidget {
   const SpeedPage({Key? key}) : super(key: key);
 
@@ -10,6 +11,7 @@ class SpeedPage extends StatefulWidget {
 }
 
 class _SpeedPageState extends State<SpeedPage> {
+  /// List of units for speed category
   List<String> speedUnits = [
     "Meter/second",
     "Meter/minute",
@@ -29,7 +31,7 @@ class _SpeedPageState extends State<SpeedPage> {
     userInput = 0;
     super.initState();
   }
-
+  /// Map to map the unit
   final Map<String, int> speedUnitMap = {
     "Meter/second": 0,
     "Meter/minute": 1,
@@ -38,7 +40,7 @@ class _SpeedPageState extends State<SpeedPage> {
     "Foot/minute": 4,
     "Miles/hour": 5
   };
-
+  /// Map to look up the conversion rate for each unit
   dynamic formulas = {
     "0": [1, 59.988, 3.599712, 3.28084, 196.8504, 2.237136],
     "1": [0.01667, 1, 0.06007, 0.054692, 3.281496, 0.037293],
@@ -47,7 +49,7 @@ class _SpeedPageState extends State<SpeedPage> {
     "4": [0.00508, 0.304739, 0.018287, 0.016667, 1, 0.011365],
     "5": [0.447, 26.81464, 1.609071, 1.466535, 87.99213, 1],
   };
-
+  /// Convert function to perform the conversion
   void convert(double value, String from, String to) {
     int? nFrom = speedUnitMap[from];
     int? nTo = speedUnitMap[to];
@@ -76,6 +78,7 @@ class _SpeedPageState extends State<SpeedPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Title
                 SizedBox(
                   height: 80.0,
                   width: 400.0,
@@ -88,6 +91,7 @@ class _SpeedPageState extends State<SpeedPage> {
                         )),
                   ),
                 ),
+                /// User's input field
                 Expanded(
                   child: Center(
                     child: Column(
@@ -136,6 +140,7 @@ class _SpeedPageState extends State<SpeedPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -181,6 +186,7 @@ class _SpeedPageState extends State<SpeedPage> {
                             ),
                           ),
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -229,6 +235,7 @@ class _SpeedPageState extends State<SpeedPage> {
                         ),
                       const SizedBox(height: 30.0),
                       Row(
+                        /// Convert button & AlertDialog to Display Result
                         children: <Widget>[
                           const SizedBox(width: 45),
                       RawMaterialButton(
@@ -287,6 +294,7 @@ class _SpeedPageState extends State<SpeedPage> {
                                   color: Colors.white),
                             ),
                           )),
+                          /// Add to favourite button to save user's favourite conversation
                           RawMaterialButton(
                             onPressed: () async {
                               if (from != null   &&  to != null ){

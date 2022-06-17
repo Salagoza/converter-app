@@ -2,7 +2,7 @@ import 'package:converter_app/services/favourite_service.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-
+/// Length conversion page
 class LengthPage extends StatefulWidget {
   const LengthPage({Key? key}) : super(key: key);
 
@@ -11,6 +11,7 @@ class LengthPage extends StatefulWidget {
 }
 
 class _LengthPageState extends State<LengthPage> {
+  /// List of units for length category
   List<String> lengthUnits = [
     "Millimeter",
     "Centimeter",
@@ -33,7 +34,7 @@ class _LengthPageState extends State<LengthPage> {
     userInput = 0;
     super.initState();
   }
-
+  /// Map to map the unit
   final Map<String, int> lengthUnitMap = {
     "Millimeter": 0,
     "Centimeter": 1,
@@ -44,7 +45,7 @@ class _LengthPageState extends State<LengthPage> {
     "Yard": 6,
     "Mile": 7,
   };
-
+  /// Map to look up the conversion rate for each unit
   dynamic formulas = {
     "0": [1.0, 0.1, 0.001, 0.000001, 0.03937, 0.003281, 0.0010936, 0.0000006214],
     "1": [10.0, 1.0, 0.01, 0.00001, 0.3937, 0.03281, 0.010936, 0.000006214],
@@ -55,6 +56,8 @@ class _LengthPageState extends State<LengthPage> {
     "6": [914.4, 91.44, 0.9144, 0.0009144, 36.0, 3.0, 1.0, 0.0005682],
     "7": [1609344.0, 160934.0, 1609.3, 1.6093, 63360.0, 5280.0, 1760.0, 1.0]
   };
+
+  /// Convert function to perform the conversion
   void convert(double value, String from, String to) {
     int? nFrom = lengthUnitMap[from];
     int? nTo = lengthUnitMap[to];
@@ -82,6 +85,7 @@ class _LengthPageState extends State<LengthPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Title
                 SizedBox(
                   height: 80.0,
                   width: 400.0,
@@ -94,6 +98,7 @@ class _LengthPageState extends State<LengthPage> {
                         )),
                   ),
                 ),
+                /// User's input field
                 Expanded(
                   child: Center(
                     child: Column(
@@ -139,6 +144,7 @@ class _LengthPageState extends State<LengthPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -184,6 +190,7 @@ class _LengthPageState extends State<LengthPage> {
                             ),
                           ),
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -233,6 +240,7 @@ class _LengthPageState extends State<LengthPage> {
                         const SizedBox(height: 30.0),
 
                         Row(
+                          /// Convert button & AlertDialog to Display Result
                           children: <Widget>[
                             const SizedBox(width: 45),
                             RawMaterialButton(
@@ -291,6 +299,7 @@ class _LengthPageState extends State<LengthPage> {
                                         color: Colors.white),
                                   ),
                                 )),
+                            /// Add to favourite button to save user's favourite conversation
                             RawMaterialButton(
                                 onPressed: () async {
                                   if (from != null   &&  to != null ){

@@ -3,6 +3,7 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 
+/// Favourite Conversation Model
 class FavouriteData {
   final int? id;
   final String fromUnit;
@@ -31,6 +32,7 @@ class FavouriteData {
   }
 }
 
+/// Database Services
 class DataBaseHelper{
   DataBaseHelper.privateConstructor();
   static final DataBaseHelper instance = DataBaseHelper.privateConstructor();
@@ -47,7 +49,7 @@ class DataBaseHelper{
       onCreate: _onCreate,
     );
   }
-
+  /// _onCreate function to create the database if non exists
   Future _onCreate(Database db, int version) async{
     await db.execute('''
       CREATE TABLE favourites(
@@ -58,19 +60,19 @@ class DataBaseHelper{
       )
     ''');
   }
-
+  /// Get all the favourites conversation stored in the database
   Future<List<FavouriteData>> getFavourites() async{
     Database db = await instance.database;
     var favourites = await db.query('favourites',orderBy: 'fromUnit');
     List<FavouriteData> favouriteList = favourites.isNotEmpty ? favourites.map((c) => FavouriteData.fromMap(c)).toList() : [];
     return favouriteList;
   }
-
+  /// Add the favourite function to the database
   Future<int> add(FavouriteData favouriteData) async{
     Database db = await instance.database;
     return await db.insert('favourites',favouriteData.toMap());
   }
-
+  /// Remove the conversation by id
   Future<int> remove(int id) async{
     Database db = await instance.database;
     return await db.delete('favourites', where: 'id = ?', whereArgs: [id]);

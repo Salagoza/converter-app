@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/favourite_service.dart';
 
+/// Temperature conversion page
 class TemperaturePage extends StatefulWidget {
   const TemperaturePage({Key? key}) : super(key: key);
 
@@ -10,6 +11,7 @@ class TemperaturePage extends StatefulWidget {
 }
 
 class _TemperaturePageState extends State<TemperaturePage> {
+  /// List of units for temperature category
   List<String> temperatureUnits = ["Degree Celsius", "Degree Fahrenheit"];
   String? from;
 
@@ -22,12 +24,12 @@ class _TemperaturePageState extends State<TemperaturePage> {
     userInput = 0;
     super.initState();
   }
-
+  /// Map to map the unit
   final Map<String, int> temperatureUnitMap = {
     "Degree Celsius": 0,
     "Degree Fahrenheit": 1,
   };
-
+  /// Map to look up the conversion rate for each unit
   dynamic formulas = {
     "0": [1.0, 1.8],
     "1": [32.0, 1.0],
@@ -65,6 +67,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Title
                 SizedBox(
                   height: 80.0,
                   width: 400.0,
@@ -77,6 +80,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                         )),
                   ),
                 ),
+                /// User's input field
                 Expanded(
                   child: Center(
                     child: Column(
@@ -125,6 +129,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -170,6 +175,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                             ),
                           ),
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -219,8 +225,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                           ),
                         ),
                         const SizedBox(height: 30.0),
-
-
+                        /// Convert button & AlertDialog to Display Result
                         Row(
                           children: <Widget>[
                             const SizedBox(width: 45),
@@ -280,6 +285,7 @@ class _TemperaturePageState extends State<TemperaturePage> {
                                         color: Colors.white),
                                   ),
                                 )),
+                            /// Add to favourite button to save user's favourite conversation
                             RawMaterialButton(
                               onPressed: () async {
                                 if (from != null   &&  to != null ){

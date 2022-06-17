@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/favourite_service.dart';
 
+/// Favourite Page to display all the favourites conversation.
 class FavouritePage extends StatefulWidget {
   const FavouritePage({Key? key}) : super(key: key);
 
@@ -26,6 +27,7 @@ class _FavouritePageState extends State<FavouritePage> {
         body: SafeArea(
             child: Column(
           children: <Widget>[
+            /// Title
             SizedBox(
               height: 80.0,
               width: 400.0,
@@ -46,10 +48,12 @@ class _FavouritePageState extends State<FavouritePage> {
                     if (!snapshot.hasData) {
                       return const Center(child: Text('Loading...'));
                     }
+                    /// A list view to display all the favourite conversation
                     return ListView(
                       children: snapshot.data!.map((favourite) {
                         return Center(
                             child: Card(
+                              /// An expansion tile for each conversation
                           child: ExpansionTile(
                             title: Text(
                               '${favourite.fromUnit} -> ${favourite.toUnit}',
@@ -61,6 +65,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                 children: [
                                   Row(
                                     children: [
+                                      /// User input fields for each favourites conversation
                                       SizedBox(
                                         height: 50,
                                         width: 280,
@@ -92,7 +97,14 @@ class _FavouritePageState extends State<FavouritePage> {
                                       ),
                                       Column(
                                         children: <Widget>[
+
+                                          /// Convert Button for each favourites conversation
                                           RawMaterialButton(
+                                            /*
+                                            if the conversation is from temperature category perform the conversation separately.
+                                            else perform the perform the normal way
+                                            Since the calculations is difference from other unit.
+                                           */
                                             onPressed: () {
                                               if (favourite.fromUnit == "Degree Celsius" || favourite.fromUnit == "Degree Fahrenheit"){
                                                 if (favourite.fromUnit == "Degree Celsius"){
@@ -166,6 +178,7 @@ class _FavouritePageState extends State<FavouritePage> {
                                               ),
                                             ),
                                             ),
+                                          /// Delete Button for the each favourites conversation
                                           RawMaterialButton(
                                             onPressed: () {
                                               setState(() {

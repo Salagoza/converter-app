@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../services/favourite_service.dart';
 
+/// Weight conversion page
 class WeightPage extends StatefulWidget {
   const WeightPage({Key? key}) : super(key: key);
 
@@ -10,6 +11,7 @@ class WeightPage extends StatefulWidget {
 }
 
 class _WeightPageState extends State<WeightPage> {
+  /// List of units for weight category
   List<String> weightUnits = [
     "Grams",
     "Kilograms",
@@ -28,7 +30,7 @@ class _WeightPageState extends State<WeightPage> {
     userInput = 0;
     super.initState();
   }
-
+  /// Map to map the unit
   final Map<String, int> weightUnitMap = {
     "Grams": 0,
     "Kilograms": 1,
@@ -36,7 +38,7 @@ class _WeightPageState extends State<WeightPage> {
     "Pounds": 3,
     "Ounces": 4
   };
-
+  /// Map to look up the conversion rate for each unit
   dynamic formulas = {
     "0": [1, 0.001, 0.000001, 0.002205, 0.035273],
     "1": [1000, 1, 0.001, 2.204586, 35.27337],
@@ -45,6 +47,7 @@ class _WeightPageState extends State<WeightPage> {
     "4": [28, 0.02835, 0.00028, 0.0625, 1]
   };
 
+  /// Convert function to perform the conversion
   void convert(double value, String from, String to) {
     int? nFrom = weightUnitMap[from];
     int? nTo = weightUnitMap[to];
@@ -73,6 +76,7 @@ class _WeightPageState extends State<WeightPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                /// Title
                 SizedBox(
                   height: 80.0,
                   width: 400.0,
@@ -85,6 +89,7 @@ class _WeightPageState extends State<WeightPage> {
                         )),
                   ),
                 ),
+                /// User's input field
                 Expanded(
                   child: Center(
                     child: Column(
@@ -133,6 +138,7 @@ class _WeightPageState extends State<WeightPage> {
                           ),
                           keyboardType: TextInputType.number,
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -178,6 +184,7 @@ class _WeightPageState extends State<WeightPage> {
                             ),
                           ),
                         ),
+                        /// From unit dropdown list
                         Align(
                           alignment: Alignment.centerLeft,
                           child: Padding(
@@ -226,6 +233,7 @@ class _WeightPageState extends State<WeightPage> {
                         ),
                       const SizedBox(height: 30.0),
                       Row(
+                        /// Convert button & AlertDialog to Display Result
                         children: <Widget>[
                           const SizedBox(width: 45),
                       RawMaterialButton(
@@ -284,6 +292,7 @@ class _WeightPageState extends State<WeightPage> {
                                   color: Colors.white),
                             ),
                           )),
+                          /// Add to favourite button to save user's favourite conversation
                           RawMaterialButton(
                             onPressed: () async {
                               if (from != null   &&  to != null ){
